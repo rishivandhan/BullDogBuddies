@@ -15,7 +15,9 @@ function Navbar() {
             <h3>Bulldog Buddies</h3>
             <nav ref={navRef}>
                 <a href="/">Log in</a>
-                <a href="/">Sign up</a>
+                <button className="signup-btn" onClick="/">
+                    Sign up
+                </button>
                 <button className="nav-btn nav-close" onClick={showNavbar}>
                     <FaTimes />
                 </button>

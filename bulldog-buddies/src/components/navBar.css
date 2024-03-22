@@ -26,9 +26,16 @@ header .nav-btn{
     font-size: 1.5rem;
 }
 .signup-btn{
-    background: (--mainColor);
+    background: var(--mainColor);
     color: white;
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 15%;
+    font-size: 1rem;
+    
 }
+
 
 @media only screen and (max-width: 750px) {
     header .nav-btn {
