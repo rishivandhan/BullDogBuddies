@@ -1,18 +1,16 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
-import './Navbar.css'
-
+import './Navbar.css';
 
 function Navbar() {
     const navRef = useRef();
-
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
     }
 
     return (
         <header>
-            <h3>Bulldog Buddies</h3>
+            <h3><a href="/">Bulldog Buddies</a></h3>
             <nav ref={navRef}>
                 <a href="/">Log in</a>
                 <button className="signup-btn" onClick="/">
