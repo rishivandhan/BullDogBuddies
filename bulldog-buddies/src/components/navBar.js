@@ -1,7 +1,7 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
 import { useState } from 'react';
-import './Navbar.css';
+import './navBar.css';
 import Signup from "./Signup";
 
 function Navbar() {
