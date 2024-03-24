@@ -1,16 +1,15 @@
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useRef } from "react";
-import { useState } from "react";
-import "./navBar.css";
-import Signup from "./Signup";
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { useState, useRef } from 'react'
+import Signup from './Signup'
+import './Navbar.css'
 
 function Navbar() {
   const navRef = useRef();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-
   const [signupPopup, setButtonPopup] = useState(false);
+
   return (
     <header>
       <h3>
@@ -23,7 +22,9 @@ function Navbar() {
         </button>
         <Signup trigger={signupPopup} setTrigger={setButtonPopup}>
           <h3>Sign up</h3>
-          <p>sign up form</p>
+          <p>Username</p>
+          <p>Email</p>
+          <p>password</p>
         </Signup>
         <button className="nav-btn nav-close" onClick={showNavbar}>
           <FaTimes />

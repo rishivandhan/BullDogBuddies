@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaBars } from "react-icons/fa";
+import React from 'react'
+import { FaBars, FaTimes } from "react-icons/fa"
 import './Signup.css'
 
 function Signup(props) {
@@ -7,12 +7,15 @@ function Signup(props) {
         <div className="signup">
             <div className="signup-inner">
                 <button className="nav-btn nav-close">
-                    <FaBars />
+                    <FaTimes />
                 </button>
                 { props.children }
             </div>
+            <button className="nav-btn nav-close">
+                <FaBars />
+            </button>
         </div>
     ) : "";
 }
 
-export default Signup
+export default Signup;
