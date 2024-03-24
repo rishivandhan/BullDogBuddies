@@ -24,7 +24,8 @@ function Navbar() {
           <h3>Sign up</h3>
           <p>Username</p>
           <p>Email</p>
-          <p>password</p>
+          <p>Password</p>
+          <p>Confirm Password</p>
         </Signup>
         <button className="nav-btn nav-close" onClick={showNavbar}>
           <FaTimes />
