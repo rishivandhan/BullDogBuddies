@@ -41,6 +41,18 @@ header .nav-btn{
     border: none;
     outline: none;
 }
+.signup-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--textColor);
+    display: none;
+    font-size: 2rem;
+}
 
 
 @media only screen and (max-width: 750px) {

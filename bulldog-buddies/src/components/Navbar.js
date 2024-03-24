@@ -21,6 +21,9 @@ function Navbar() {
           Sign up
         </button>
         <Signup trigger={signupPopup} setTrigger={setButtonPopup}>
+          <button className="signup-close">
+            <FaTimes />
+          </button>
           <h3>Sign up</h3>
           <p>Username</p>
           <p>Email</p>
