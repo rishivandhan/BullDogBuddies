@@ -28,13 +28,33 @@ function Navbar() {
         {/*Login Popup*/}
         <Login trigger={loginPopup} setTrigger={LoginPopup}>
           <h3>Login</h3>
-          <p>Login Form</p>
+          <form>
+            <label>Username:
+                <input type="text" />
+            </label><br />
+            <label>Password:
+                <input type="text" />
+            </label>
+          </form>
         </Login>
 
         {/*Signup Popup*/}
         <Signup trigger={signupPopup} setTrigger={SignUpPopup}>
           <h3>Sign up</h3>
-          <p>sign up form</p>
+          <form>
+            <label>Username:
+              <input type="text" />
+            </label><br />
+            <label>Email:
+              <input type="text" />
+            </label><br />
+            <label>Password:
+              <input type="text" />
+            </label><br />
+            <label>Confirm Password:
+              <input type="text" />
+            </label>
+          </form>
         </Signup>
 
         <button className="nav-btn nav-close" onClick={showNavbar}>
