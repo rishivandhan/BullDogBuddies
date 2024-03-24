@@ -53,6 +53,18 @@ header .nav-btn{
     display: none;
     font-size: 2rem;
 }
+.login-btn{
+    background: white;
+    color: black;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 0.8rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+}
 
 
 @media only screen and (max-width: 750px) {
