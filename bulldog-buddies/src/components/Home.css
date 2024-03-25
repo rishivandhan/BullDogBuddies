@@ -1,0 +1,32 @@
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 3rem;
+    background-color: white;
+    color: var(--textColor);
+}
+
+
+.page-heading {
+    font-size: 48px;
+    padding-left: 20px;
+    margin-top: 50px;
+
+    font-weight: bold;
+
+}
+
+
+.page-heading {
+    font-size: 20px;
+}
+
+
+.welcome-picture{
+    display: flex;
+    padding-left: 50px;
+    margin-left: 50;
+    margin-top: 1000px;
+}
