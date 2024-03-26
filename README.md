@@ -1,4 +1,3 @@
 # BullDogBuddies
 
 Womp Womp
-HEHE
