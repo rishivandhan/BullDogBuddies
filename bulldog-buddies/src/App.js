@@ -15,8 +15,11 @@ function App() {
     <React.Fragment>
       <Navbar />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 
+=======
+>>>>>>> Stashed changes
       <Home />
       <Footer />
 >>>>>>> Stashed changes

@@ -10,7 +10,7 @@
 }
 .sb__footer-links{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
@@ -26,10 +26,15 @@
     flex-direction: row;
     color: black;
 }
+.sb__footer-links-div .footer-github {
+    height: 75px;
+    width: auto;
+}
 .sb__footter-links-div p{
     font-size: 12px;
     line-height: 15px;
     margin: 0.5rem 0;
+    justify-content: space-between;
     cursor: pointer;
 }
 .sb__footer-below{
