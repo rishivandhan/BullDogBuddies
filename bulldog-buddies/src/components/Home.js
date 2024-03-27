@@ -15,10 +15,11 @@ function Home() {
         </h3>
       </div>
 
+      <br></br>
       <div className="welcome-picture">
         <img src={partyPicture} alt="" />
       </div>
-
+      <br></br>
       <div className="highFive-Picture">
         <img src={HighFive} alt="" />
       </div>

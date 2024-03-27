@@ -7,7 +7,18 @@ import "./App.css";
 function App() {
   return (
     <React.Fragment>
+
       <Navbar />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      
+      
 
       <Home />
       <Footer />
