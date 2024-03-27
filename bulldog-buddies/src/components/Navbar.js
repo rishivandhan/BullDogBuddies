@@ -50,7 +50,7 @@ function Navbar() {
             console.log("User emails that are in the database: ", userEmails);
             console.log("userEmails array length: ", userEmails.length);    
             
-            const checkFlag = false;
+            var checkFlag = false;
 
             for (let i = 0; i < userEmails.length; i++) {
                 console.log("string iteration in userEmails array: ", userEmails[i]);
@@ -71,6 +71,16 @@ function Navbar() {
 
         functionResult.then(result => {
             console.log("Is email in the list? ", result); // This will log true if email is in the list, otherwise false
+
+            if (result) {
+                alert("A user with this email already exists.");
+            } else {
+              console.log("Creating new user");
+              createUser(username, email, password);
+              SignUpPopup(false);
+              alert("User Successfully created");
+            }
+
         })
 
         //console.log("function return statement from NavBar: ", functionResult.then(result));
@@ -83,15 +93,7 @@ function Navbar() {
 
 
 
-        // if (isEmailInArray(email, fetchAllUserEmails())) {
-            
-        //     alert("A user with this email already exists.");
-        // } else {
-        //   console.log("Creating new user");
-        //   createUser(username, email, password);
-        //   SignUpPopup(false);
-        //   alert("User Successfully created");
-        // }
+        
       } catch (error) {
         console.error("Error during signup:", error);
         alert("An error occurred during signup.");
