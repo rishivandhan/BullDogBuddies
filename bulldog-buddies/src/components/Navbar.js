@@ -45,18 +45,14 @@ function Navbar() {
         console.log("Checking if user already exists");
         const emailExists = checkUserEmailExists(email);
 
-        //emailExist function not working.
-        console.log("Creating new user");
-        createUser(username, email, password);
-        SignUpPopup(false);
-        alert("User Successfully created");
-
-        /*
         if (emailExists) {
           alert("A user with this email already exists.");
         } else {
-          
-        }*/
+          console.log("Creating new user");
+          createUser(username, email, password);
+          SignUpPopup(false);
+          alert("User Successfully created");
+        }
       } catch (error) {
         console.error("Error during signup:", error);
         alert("An error occurred during signup.");
