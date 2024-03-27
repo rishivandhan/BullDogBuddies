@@ -11,7 +11,7 @@ import { useUserOperations } from "../FirebaseUserOperations";
 function Navbar() {
   const navRef = useRef();
 
-  const { createUser, checkUserEmailExists, checkCredentials } =
+  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, isEmailInArray } =
     useUserOperations();
 
   const showNavbar = () => {
@@ -43,10 +43,10 @@ function Navbar() {
       console.log("Before user is created");
       try {
         console.log("Checking if user already exists");
-        const emailExists = checkUserEmailExists(email);
 
-        if (emailExists) {
-          alert("A user with this email already exists.");
+        if (isEmailInArray(email, fetchAllUserEmails())) {
+            
+            alert("A user with this email already exists.");
         } else {
           console.log("Creating new user");
           createUser(username, email, password);
