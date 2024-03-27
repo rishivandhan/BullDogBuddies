@@ -11,7 +11,7 @@
     function Navbar() {
         const navRef = useRef();
 
-        const { createUser } = useUserOperations();
+        const { createUser, checkUserEmailExists, checkCredentials } = useUserOperations();
 
         const showNavbar = () => {
             navRef.current.classList.toggle("responsive_nav");
@@ -42,8 +42,24 @@
                     alert('Passwords do not match.');
                     return;
                 } else { // create the user DB in the Firebase
-                    createUser(username, email, password);
-                    console.log();
+                    console.log("Before user is created");
+                    try {
+                        console.log('Checking if user already exists');
+                        const emailExists = checkUserEmailExists(email);
+                        if (emailExists) {
+                            alert('A user with this email already exists.');
+                        } else {
+                            console.log('Creating new user');
+                            createUser(username, email, password);
+                            SignUpPopup(false);
+                        }
+                    } catch (error) {
+                        console.error('Error during signup:', error);
+                        alert('An error occurred during signup.');
+                    }
+                    
+                    
+                    
                     return;
                 }
 
@@ -52,6 +68,16 @@
                 
         }
 
+
+        // login submit button
+        function handleLoginFormSubmit(event) {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            console.log("before checking user credentials ...");
+            checkCredentials(username, password);
+            return;
+        }
 
         
 
@@ -73,7 +99,7 @@
             {/*Login Popup*/}
             <Login trigger={loginPopup} setTrigger={LoginPopup}>
             <h3>Login</h3>
-            <form>
+            <form onSubmit={handleLoginFormSubmit}>
                 <label>Username:
                     <input type="text" />
                 </label><br />
@@ -81,9 +107,7 @@
                     <input type="text" />
                 </label><br />
 
-                <label>Login
-                    <input type="submit" />
-                </label>
+                <button type="submit" id="submit-login-button" className="submit-login-button">Login</button>
             </form>
             </Login>
 
