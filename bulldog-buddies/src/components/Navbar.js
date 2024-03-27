@@ -39,6 +39,7 @@ function Navbar() {
       alert("Passwords do not match.");
       return;
     } else {
+      console.log("this is just a change");
       // create the user DB in the Firebase
       console.log("Before user is created");
       try {
