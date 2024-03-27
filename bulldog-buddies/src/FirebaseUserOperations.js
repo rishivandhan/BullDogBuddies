@@ -61,7 +61,7 @@ export const useUserOperations = () => {
 
 
     // Function to retrieve all users and their emails
-    const fetchAllUserEmails = async () => {
+    const fetchAllUserEmails = async (emailToCheck) => {
         const usersRef = ref(database, 'users');
         const usersQuery = query(usersRef, orderByChild('userEmail')); // Assuming the field is called 'userEmail'
     
@@ -71,8 +71,11 @@ export const useUserOperations = () => {
             const users = snapshot.val();
             // Iterate over the object and extract userEmails
             const userEmails = Object.values(users).map(user => user.userEmail);
-            console.log(userEmails);
             return userEmails;
+            
+            
+            
+
         } else {
             console.log('No users found.');
             return [];
@@ -81,11 +84,18 @@ export const useUserOperations = () => {
         console.error('Error fetching user emails:', error);
         }
     };
+  
 
-    function isEmailInArray(emailToCheck, userEmails) {
-        for (let i = 0; i < userEmails.length; i++) {
+
+    function isEmailInArray(emailToCheck) {
+        //console.log("User emails that are in the database from the isEmailInArray: ", userEmails);
+        
+        for (let i = 0; i < fetchAllUserEmails().length; i++) {
+            console.log("string iteration in userEmails array: ");
             if (userEmails[i] === emailToCheck) {
                 return true; // Email found
+            } else {
+              return false;
             }
         }
         return false; // Email not found

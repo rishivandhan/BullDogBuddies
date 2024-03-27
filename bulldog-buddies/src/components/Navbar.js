@@ -43,16 +43,55 @@ function Navbar() {
       console.log("Before user is created");
       try {
         console.log("Checking if user already exists");
-
-        if (isEmailInArray(email, fetchAllUserEmails())) {
+        
+        console.log(email === 'test3@gmail.com');
+        
+        const functionResult = fetchAllUserEmails(email).then(userEmails => {
+            console.log("User emails that are in the database: ", userEmails);
+            console.log("userEmails array length: ", userEmails.length);    
             
-            alert("A user with this email already exists.");
-        } else {
-          console.log("Creating new user");
-          createUser(username, email, password);
-          SignUpPopup(false);
-          alert("User Successfully created");
-        }
+            const checkFlag = false;
+
+            for (let i = 0; i < userEmails.length; i++) {
+                console.log("string iteration in userEmails array: ", userEmails[i]);
+                //  console.log(emailToCheck === userEmails[i]);
+                if (userEmails[i] === (email) ) {
+                    console.log("email is in the list");
+                    checkFlag = true; // Email found
+                    console.log("checkFlag", checkFlag);
+                } else {
+                  console.log(" email is not in the list");
+                  console.log("checkFlag: ", checkFlag);
+                }
+            }
+
+            console.log("return checkFlag", checkFlag);
+            return checkFlag;
+          });
+
+        functionResult.then(result => {
+            console.log("Is email in the list? ", result); // This will log true if email is in the list, otherwise false
+        })
+
+        //console.log("function return statement from NavBar: ", functionResult.then(result));
+        
+        // if (fetchAllUserEmails(email)) {
+        //     console.log("email exists in the DB with: ", email);
+        // } else {
+        //     console.log("email does not exists in the DB with: ", email);
+        // }
+
+
+
+        // if (isEmailInArray(email, fetchAllUserEmails())) {
+            
+        //     alert("A user with this email already exists.");
+        // } else {
+        //   console.log("Creating new user");
+        //   createUser(username, email, password);
+        //   SignUpPopup(false);
+        //   alert("User Successfully created");
+        // }
       } catch (error) {
         console.error("Error during signup:", error);
         alert("An error occurred during signup.");
