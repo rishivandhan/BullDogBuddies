@@ -55,7 +55,7 @@ header .nav-btn{
 }
 
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 550px) {
     header .nav-btn {
         display:flex;
         opacity: 1;
