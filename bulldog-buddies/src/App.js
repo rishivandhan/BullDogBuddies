@@ -6,6 +6,8 @@ import "./App.css";
 function App() {
   return (
     <React.Fragment>
+
+      <Navbar />
       <br></br>
       <br></br>
       <br></br>
@@ -15,7 +17,7 @@ function App() {
       <br></br>
       <br></br>
       
-      <Navbar />
+      
 
       <Home />
     </React.Fragment>
