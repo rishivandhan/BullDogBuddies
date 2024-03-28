@@ -1,6 +1,8 @@
 import React from "react";
+import "./Navbar.css";
 import "./Home.css";
-import { ReactTyped } from 'react-typed';
+import Signup from "./Signup";
+
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
 
@@ -10,30 +12,16 @@ function Home() {
       <div class="page-heading">
         <h1>Whats your next event?</h1>
         <h3 class="Page-subheading">
-          The easiest way for finding your next
+          The easiest way for finding your next (scroll through word list)
         </h3>
-        <h3 className="body-highlight">
-          <ReactTyped
-            strings={[
-              "tennis partner",
-              "basketball game",
-              "game tournament",
-              "party",
-            ]}
-            typeSpeed={100}
-            backSpeed={100}
-            loop
-          />
-        </h3>
-        <div class="welcome-Picture">
-          <img src={partyPicture} alt="welcome-picture" />
-        </div>
       </div>
+
+      <div class="welcome-Picture">
+        <img src={partyPicture} alt="" />
+      </div>
+
       <div class="highFive-Picture">
-        <img src={HighFive} alt="highfive-picture" />
-        <h3 class="Page-subheading">
-          Connect with students and people in your city
-        </h3>
+        <img src={HighFive} alt="" />
       </div>
     </div>
   );
