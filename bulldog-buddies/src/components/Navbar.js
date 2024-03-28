@@ -11,7 +11,7 @@ import { useUserOperations } from "../FirebaseUserOperations";
 function Navbar() {
   const navRef = useRef();
 
-  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, isEmailInArray } =
+  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, fetchAllUserPasswords } =
     useUserOperations();
 
   const showNavbar = () => {
@@ -81,19 +81,7 @@ function Navbar() {
               alert("User Successfully created");
             }
 
-        })
-
-        //console.log("function return statement from NavBar: ", functionResult.then(result));
-        
-        // if (fetchAllUserEmails(email)) {
-        //     console.log("email exists in the DB with: ", email);
-        // } else {
-        //     console.log("email does not exists in the DB with: ", email);
-        // }
-
-
-
-        
+        })        
       } catch (error) {
         console.error("Error during signup:", error);
         alert("An error occurred during signup.");
@@ -107,11 +95,89 @@ function Navbar() {
 
   // login submit button
   function handleLoginFormSubmit(event) {
-    const username = document.getElementById("username").value;
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     console.log("before checking user credentials ...");
-    checkCredentials(username, password);
+    //checkCredentials(username, password);
+    try {
+        console.log("Checking if user exists");
+        
+        // this is to check for the email
+        const functionEmailsResult = fetchAllUserEmails(email).then(userEmails => {
+            console.log("User emails that are in the database: ", userEmails);
+            console.log("userEmails array length: ", userEmails.length);    
+            
+            var checkFlag = false;
+            var userInstance = -1;
+
+            for (let i = 0; i < userEmails.length; i++) {
+                console.log("string iteration in userEmails array: ", userEmails[i]);
+                //  console.log(emailToCheck === userEmails[i]);
+                if (userEmails[i] === (email) ) {
+                    console.log("email is in the list");
+                    checkFlag = true; // Email found
+                    userInstance = i;
+                    console.log("userInstance", userInstance);
+
+                } else {
+                  console.log(" email is not in the list");
+                  console.log("userInstance", userInstance);
+                }
+            }
+
+            console.log("returning userInstance:", userInstance);
+            return userInstance;
+
+            // password check
+            console.log()
+
+
+          });
+        
+
+        // This is to check for the password
+        functionEmailsResult.then(result => {
+            console.log("The instance of the email in the list is:  ", result); // This will log true if email is in the list, otherwise false
+
+            if (result > -1) {
+                console.log("this email exists.");
+
+                // checking to see if the password is correct in that user with existing
+                const funtionPasswordResult = fetchAllUserPasswords().then(userPasswords => {
+                    console.log("The usesr's password is: " + userPasswords[result]);
+                    
+                    if ( userPasswords[result] === password) {
+                        console.log("You entered the correct password");
+                        
+                        // implement more login button code here
+
+                        return true;
+                    } else {
+                        console.log("wrong password");
+                        alert("Wrong password");
+                        return false;
+                    }
+                });
+
+
+                
+            } else {
+              console.log("wrong email");
+              alert("Wrong email");
+            }
+
+        })        
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred during logging in.");
+      }
+
+
+
+
     return;
   }
 
@@ -156,7 +222,7 @@ function Navbar() {
         {/*Signup Popup*/}
         <Signup trigger={signupPopup} setTrigger={SignUpPopup}>
           <h3>Sign Up</h3>
-          <form onSubmit={handleSignupFormSubmit}>
+          <form onSubmit={handleLoginFormSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input type="text" id="username" name="username" />
@@ -184,7 +250,11 @@ function Navbar() {
               className="submit-signup-button"
             >
               Sign Up
-            </button>
+            </button> 
+            
+            <br></br>
+
+            
           </form>
         </Signup>
 

@@ -71,17 +71,35 @@ export const useUserOperations = () => {
             const users = snapshot.val();
             // Iterate over the object and extract userEmails
             const userEmails = Object.values(users).map(user => user.userEmail);
-            return userEmails;
-            
-            
-            
-
+            return userEmails;                   
         } else {
             console.log('No users found.');
             return [];
         }
         } catch (error) {
         console.error('Error fetching user emails:', error);
+        }
+    };
+
+    // Function to retrieve all users and their passwords
+    const fetchAllUserPasswords = async () => {
+        const usersRef = ref(database, 'users');
+        const usersQuery = query(usersRef, orderByChild('userPassword')); // Adjust if the field name is different
+
+        try {
+            const snapshot = await get(usersQuery);
+            if (snapshot.exists()) {
+                const users = snapshot.val();
+                // Iterate over the object and extract userPasswords
+                const userPasswords = Object.values(users).map(user => user.userPassword);
+                console.log(userPasswords);
+                return userPasswords;
+            } else {
+                console.log('No users found.');
+                return [];
+            }
+        } catch (error) {
+            console.error('Error fetching user passwords:', error);
         }
     };
   
@@ -167,6 +185,7 @@ export const useUserOperations = () => {
     checkUserEmailExists,
     checkCredentials,
     fetchAllUserEmails,
+    fetchAllUserPasswords,
     isEmailInArray
   };
 };
