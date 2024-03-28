@@ -8,8 +8,12 @@ import { database } from "../Firebase";
 import { push, ref, onValue, set, remove, update } from "firebase/database";
 import { useUserOperations } from "../FirebaseUserOperations";
 
+var userInstance = -1
+
 function Navbar() {
   const navRef = useRef();
+
+  userInstance = -1;
 
   const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, fetchAllUserPasswords } =
     useUserOperations();
@@ -51,6 +55,7 @@ function Navbar() {
             console.log("userEmails array length: ", userEmails.length);    
             
             var checkFlag = false;
+            
 
             for (let i = 0; i < userEmails.length; i++) {
                 console.log("string iteration in userEmails array: ", userEmails[i]);
@@ -58,6 +63,7 @@ function Navbar() {
                 if (userEmails[i] === (email) ) {
                     console.log("email is in the list");
                     checkFlag = true; // Email found
+                    userInstance = i;
                     console.log("checkFlag", checkFlag);
                 } else {
                   console.log(" email is not in the list");
@@ -111,7 +117,7 @@ function Navbar() {
             console.log("userEmails array length: ", userEmails.length);    
             
             var checkFlag = false;
-            var userInstance = -1;
+            userInstance = -1;
 
             for (let i = 0; i < userEmails.length; i++) {
                 console.log("string iteration in userEmails array: ", userEmails[i]);
@@ -222,7 +228,7 @@ function Navbar() {
         {/*Signup Popup*/}
         <Signup trigger={signupPopup} setTrigger={SignUpPopup}>
           <h3>Sign Up</h3>
-          <form onSubmit={handleLoginFormSubmit}>
+          <form onSubmit={handleSignupFormSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input type="text" id="username" name="username" />
@@ -267,6 +273,9 @@ function Navbar() {
       </button>
     </header>
   );
+
+  
 }
 
+export {userInstance}
 export default Navbar;
