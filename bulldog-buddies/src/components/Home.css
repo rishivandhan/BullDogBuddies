@@ -1,27 +1,28 @@
 .home-container {
     display: flex;
     align-items: center;
-    height: 80vh;
-    padding: 0 3rem;
+    height: 100vh;
+    padding: 0 5rem;
     background-color: white;
     color: var(--textColor);
 }
 .page-heading {
     font-size: 48px;
     padding-left: 10px;
-    margin-top: 50px;
 
     font-weight: bold;
     font-size: 25px;
 }
+h3 .body-highlight {
+    color: var(--textColor);
+}
 .welcome-Picture{
     display: flex;
-    margin-left: -60%;
-    margin-top: 50%;
 }
 .highFive-Picture{
     display: flex;
     margin-left: 30%;
-    margin-top: 25%;
+    flex-direction: column;
+
 }
 
