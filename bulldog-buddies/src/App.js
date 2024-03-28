@@ -6,23 +6,11 @@ import "./App.css";
 
 function App() {
   return (
-    <React.Fragment>
-
+    <div className="App">
       <Navbar />
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      
-      
-
       <Home />
       <Footer />
-    </React.Fragment>
+    </div>
   );
 }
 
