@@ -5,18 +5,16 @@ import { FaGithub } from 'react-icons/fa';
 const Footer = () => {
     return (
         <div className="footer">
-            <div classNAme="sb__footer section__padding">
-                <div className="sb__footer-links">
-                    <div className="sb__footer-links-div footer-github">
+            <div className="sb__footer-links">
+                <div className="sb__footer-links-div">
+                    <a href="https://github.com/rishivandhan/BullDogBuddies/tree/main/bulldog-buddies">
                         <FaGithub />
-                    </div>
-                    <div className="sb__footer-links-div">
-                        <p>Rishi</p>
-                        <p>Toni</p>
-                        <p>Arjun</p>
-                        <p>Sanjay</p>
-                        <p>Luke</p>
-                    </div>
+                    </a>
+                    <p>Rishi</p>
+                    <p>Toni</p>
+                    <p>Arjun</p>
+                    <p>Sanjay</p>
+                    <p>Luke</p>
                 </div>
             </div>
             <div className="sb__footer-below">
