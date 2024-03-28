@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="footer">
             <div classNAme="sb__footer section__padding">
                 <div className="sb__footer-links">
-                    <div className="sb__footer-links-div footer-github">
-                        <FaGithub />
+                    <div className="sb__footer-links-div">
+                        <p><img src={ FaGithub } alt="github" /></p>
                     </div>
                     <div className="sb__footer-links-div">
                         <p>Rishi</p>
