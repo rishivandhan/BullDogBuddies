@@ -10,9 +10,7 @@
 }
 .sb__footer-links{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
@@ -26,10 +24,10 @@
     flex-direction: row;
     color: black;
 }
-.sb__footter-links-div p{
-    font-size: 12px;
+.sb__footer-links-div p{
+    font-size: 20px;
     line-height: 15px;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
     cursor: pointer;
 }
 .sb__footer-below{
