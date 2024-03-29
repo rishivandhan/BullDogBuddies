@@ -23,6 +23,8 @@ export const useUserOperations = () => {
   const [userCreatedEvents, setUserCreatedEvents] = useState(0);
   const [userRSVPEvents, setUserRSVPEvents] = useState(0);
 
+  const userEmails = [];
+
   const createUser = async (username, email, password) => {
     console.log("Adding to DB ...");
     try {
@@ -57,6 +59,66 @@ export const useUserOperations = () => {
     return email.replace(/\./g, ",");
   }
 
+
+    // Function to retrieve all users and their emails
+    const fetchAllUserEmails = async (emailToCheck) => {
+        const usersRef = ref(database, 'users');
+        const usersQuery = query(usersRef, orderByChild('userEmail')); // Assuming the field is called 'userEmail'
+    
+        try {
+        const snapshot = await get(usersQuery);
+        if (snapshot.exists()) {
+            const users = snapshot.val();
+            // Iterate over the object and extract userEmails
+            const userEmails = Object.values(users).map(user => user.userEmail);
+            return userEmails;                   
+        } else {
+            console.log('No users found.');
+            return [];
+        }
+        } catch (error) {
+        console.error('Error fetching user emails:', error);
+        }
+    };
+
+    // Function to retrieve all users and their passwords
+    const fetchAllUserPasswords = async () => {
+        const usersRef = ref(database, 'users');
+        const usersQuery = query(usersRef, orderByChild('userPassword')); // Adjust if the field name is different
+
+        try {
+            const snapshot = await get(usersQuery);
+            if (snapshot.exists()) {
+                const users = snapshot.val();
+                // Iterate over the object and extract userPasswords
+                const userPasswords = Object.values(users).map(user => user.userPassword);
+                console.log(userPasswords);
+                return userPasswords;
+            } else {
+                console.log('No users found.');
+                return [];
+            }
+        } catch (error) {
+            console.error('Error fetching user passwords:', error);
+        }
+    };
+  
+
+
+    function isEmailInArray(emailToCheck) {
+        //console.log("User emails that are in the database from the isEmailInArray: ", userEmails);
+        
+        for (let i = 0; i < fetchAllUserEmails().length; i++) {
+            console.log("string iteration in userEmails array: ");
+            if (userEmails[i] === emailToCheck) {
+                return true; // Email found
+            } else {
+              return false;
+            }
+        }
+        return false; // Email not found
+    }
+
   async function checkUserEmailExists(email) {
     const usersRef = ref(database, "users");
     const usersQuery = query(
@@ -64,6 +126,7 @@ export const useUserOperations = () => {
       //orderByChild("userEmail"),
       equalTo(email)
     );
+    
 
     const snapshot = await get(usersQuery);
     console.log("this is the snapshtot", snapshot);
@@ -121,5 +184,8 @@ export const useUserOperations = () => {
     createUser,
     checkUserEmailExists,
     checkCredentials,
+    fetchAllUserEmails,
+    fetchAllUserPasswords,
+    isEmailInArray
   };
 };
