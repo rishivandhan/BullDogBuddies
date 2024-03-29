@@ -26,10 +26,10 @@
     font-size: 20px;
     margin: 0.8rem;
     margin-bottom: 0;
-    cursor: pointer;
     color: black;
 }
 .sb__footer-links-div a{
+    cursor: pointer;
     font-size: 25px;
 }
 .sb__footer-below{
@@ -39,7 +39,7 @@
 }
 .sb__footer-copyright{
     font-size: 13px;
-    color: white;
+    color: black;
     font-weight: 400;
     padding-bottom: 5px;
 }
