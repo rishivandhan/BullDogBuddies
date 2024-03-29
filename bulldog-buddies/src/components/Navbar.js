@@ -106,7 +106,7 @@ function Navbar() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    console.log("before checking user credentials ...");
+    console.log("stored user login details");
     //checkCredentials(username, password);
     try {
         console.log("Checking if user exists");
@@ -157,6 +157,7 @@ function Navbar() {
                     
                     if ( userPasswords[result] === password) {
                         console.log("You entered the correct password");
+                        alert("login Success!");
                         
                         // implement more login button code here
 
@@ -171,8 +172,8 @@ function Navbar() {
 
                 
             } else {
-              console.log("wrong email");
-              alert("Wrong email");
+              console.log("A user with that email does not exist, Please sign up!");
+              alert("A user with that email does not exist, Please sign up!");
             }
 
         })        
@@ -205,13 +206,13 @@ function Navbar() {
           <h3>Login</h3>
           <form onSubmit={handleLoginFormSubmit}>
             <label>
-              Username:
-              <input type="text" />
+              email:
+              <input type="text"  id = "email" name = "email"/>
             </label>
             <br />
             <label>
               Password:
-              <input type="text" />
+              <input type="text" id = "password" name = "password"/>
             </label>
             <br />
 
