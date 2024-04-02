@@ -29,7 +29,14 @@ function CreateEvents() {
         <div className='form'>
         <form method="post" onSubmit={handleSubmit}>
       <label>
-        Text input: <input name="myInput" defaultValue="" />
+        Title: <input name="eventTitle" defaultValue="" /> <br />
+        Expiration Time: <input name="eventExpirationTime" defaultValue="" /> <br />
+        Description: <input name="Descriptio" defaultValue="" /><br />
+        Location: <input name="eventLocation" defaultValue="" /><br />
+        Number of People to Resgister: <input name="eventPeopleRegistered" defaultValue="" /><br />
+        Time: <input name="eventTitle" defaultValue="" />  <br /> {/*come back later. not a text input. need a checkbox for am and pm*/  }  
+        Number of People Limit: <input name="PeopleLimit" defaultValue="" /><br />
+
       </label>
       <hr />
       <label>
