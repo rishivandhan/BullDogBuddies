@@ -27,9 +27,7 @@ export const useUserOperations = () => {
   const userEmails = [];
 
   const updateAllUserEventsWhenSigningIn = async () => {
-    // Reference to all events
     const eventsRef = ref(database, 'events');
-    // Reference to all users
     const usersRef = ref(database, 'users');
   
     // Get a snapshot of all current events
@@ -48,8 +46,7 @@ export const useUserOperations = () => {
       console.log('No users found for updating events.');
       return;
     }
-  
-    // Prepare updates object
+
     const updates = {};
   
     // Iterate over each user
@@ -59,16 +56,13 @@ export const useUserOperations = () => {
   
       // Iterate over each event key to add to the user's userEvents
       eventKeys.forEach((eventKey) => {
-        // If the event key doesn't exist in the user's userEvents, or it's "false",
-        // we update it to "false". If it exists with a different value, we keep it.
+        // Updating event such the default value is "false". If event exists with a different value, we keep it.
         if (!userEvents[eventKey] || userEvents[eventKey] === "false") {
           updates[`${userId}/userEvents/${eventKey}`] = "false";
         }
-        // If the event key exists with a non-"false" value, we do not change it
       });
     });
   
-    // Perform the updates in one go
     await update(usersRef, updates);
   };
   
