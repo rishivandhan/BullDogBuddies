@@ -7,15 +7,20 @@ import Login from "./Login";
 import { database } from "../Firebase";
 import { push, ref, onValue, set, remove, update } from "firebase/database";
 import { useUserOperations } from "../FirebaseUserOperations";
+import { useNavigate } from 'react-router-dom';
 
 var userInstance = -1
+var currentUserId = -1;
 
 function Navbar() {
   const navRef = useRef();
 
+  const navigate = useNavigate();
+
+  currentUserId = -1;
   userInstance = -1;
 
-  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, fetchAllUserPasswords } =
+  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, fetchAllUserPasswords, fetchUserIdByInstance } =
     useUserOperations();
 
   const showNavbar = () => {
@@ -72,6 +77,8 @@ function Navbar() {
             }
 
             console.log("return checkFlag", checkFlag);
+            if(!checkFlag)
+              userInstance = userEmails.length;
             return checkFlag;
           });
 
@@ -81,10 +88,27 @@ function Navbar() {
             if (result) {
                 alert("A user with this email already exists.");
             } else {
-              console.log("Creating new user");
               createUser(username, email, password);
-              SignUpPopup(false);
-              alert("User Successfully created");
+              
+
+              console.log("userInstance before function" , userInstance);
+              const userInstanceBeforeFunction = userInstance;
+              fetchUserIdByInstance(userInstance).then(userId => {
+                currentUserId = userId;
+                userInstance = userInstanceBeforeFunction;
+
+                console.log("Current Signed-in User ID: ", currentUserId);
+                console.log("Current Signed-in User instance: ", userInstance);
+
+
+                // sign-in functionality
+                console.log("Creating new user");
+                
+                alert("User Successfully created");
+                SignUpPopup(false);
+                navigate('/CreateEvents')
+                
+              });
             }
 
         })        
@@ -156,8 +180,23 @@ function Navbar() {
                     console.log("The usesr's password is: " + userPasswords[result]);
                     
                     if ( userPasswords[result] === password) {
-                        console.log("You entered the correct password");
-                        alert("login Success!");
+                        
+                        
+                        
+                        fetchUserIdByInstance(userInstance).then(userId => {
+                          currentUserId = userId;
+                          console.log("Current User ID: ", currentUserId);
+
+
+                          // login functionality
+                          console.log("You entered the correct password");
+                          alert("login Success!");
+                          navigate('/CreateEvents')
+                          LoginPopup(false)
+                        });
+
+                        
+                        
                         
                         // implement more login button code here
 
@@ -182,11 +221,15 @@ function Navbar() {
         alert("An error occurred during logging in.");
       }
 
+      
+
 
 
 
     return;
   }
+
+  
 
   return (
     <header>
@@ -278,5 +321,5 @@ function Navbar() {
   
 }
 
-export {userInstance}
+export {userInstance, currentUserId}
 export default Navbar;

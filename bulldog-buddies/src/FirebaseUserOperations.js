@@ -7,6 +7,7 @@ import {
   ref,
   get,
   orderByChild,
+  orderByKey,
   query,
   equalTo,
   child,
@@ -25,32 +26,82 @@ export const useUserOperations = () => {
 
   const userEmails = [];
 
+  const updateAllUserEventsWhenSigningIn = async () => {
+    // Reference to all events
+    const eventsRef = ref(database, 'events');
+    // Reference to all users
+    const usersRef = ref(database, 'users');
+  
+    // Get a snapshot of all current events
+    const eventsSnapshot = await get(eventsRef);
+    if (!eventsSnapshot.exists()) {
+      console.log('No events to update.');
+      return;
+    }
+    
+    // Construct a list of all event keys
+    const eventKeys = Object.keys(eventsSnapshot.val());
+  
+    // Get a snapshot of all users
+    const usersSnapshot = await get(usersRef);
+    if (!usersSnapshot.exists()) {
+      console.log('No users found for updating events.');
+      return;
+    }
+  
+    // Prepare updates object
+    const updates = {};
+  
+    // Iterate over each user
+    usersSnapshot.forEach((userSnapshot) => {
+      const userId = userSnapshot.key;
+      const userEvents = userSnapshot.val().userEvents || {};
+  
+      // Iterate over each event key to add to the user's userEvents
+      eventKeys.forEach((eventKey) => {
+        // If the event key doesn't exist in the user's userEvents, or it's "false",
+        // we update it to "false". If it exists with a different value, we keep it.
+        if (!userEvents[eventKey] || userEvents[eventKey] === "false") {
+          updates[`${userId}/userEvents/${eventKey}`] = "false";
+        }
+        // If the event key exists with a non-"false" value, we do not change it
+      });
+    });
+  
+    // Perform the updates in one go
+    await update(usersRef, updates);
+  };
+  
   const createUser = async (username, email, password) => {
     console.log("Adding to DB ...");
     try {
+      // Reference to users in the database
       const usersRef = ref(database, "users");
-      const newDataRef = push(usersRef);
-
-      set(newDataRef, {
+      const newUserRef = push(usersRef);
+  
+      // Set the new user data along with userEvents
+      await set(newUserRef, {
         userName: username,
         userEmail: email,
         userPassword: password,
-        userCreatedEvents: userCreatedEvents,
-        userRSVPEvents: userRSVPEvents,
-      })
-        .then(() => {
-          setUserName("");
-          setUserEmail("");
-          setUserPassword("");
-          setUserCreatedEvents(0);
-          setUserRSVPEvents(0);
-          alert("Data added successfully");
-        })
-        .catch((error) => {
-          console.error("Firebase error: ", error);
-        });
+        userEvents: {}, // Initialize with an empty object
+        userCreatedEvents: 0,
+        userRSVPEvents: 0,
+      });
+  
+      // After creating a new user, update the userEvents for all users
+      await updateAllUserEventsWhenSigningIn();
+  
+      // Reset state and alert user of success
+      setUserName("");
+      setUserEmail("");
+      setUserPassword("");
+      setUserCreatedEvents(0);
+      setUserRSVPEvents(0);
+      alert("Data added successfully and userEvents updated for all users.");
     } catch (error) {
       console.error("Firebase error: ", error);
+      alert("There was a problem adding the data.");
     }
   };
 
@@ -102,6 +153,40 @@ export const useUserOperations = () => {
             console.error('Error fetching user passwords:', error);
         }
     };
+
+    // Function to retrieve a user's ID based on an index (userInstance)
+    const fetchUserIdByInstance = async (userInstance) => {
+      const usersRef = ref(database, 'users');
+      const usersQuery = query(usersRef, orderByKey());  // We're ordering by key to get the user IDs
+
+      try {
+          const snapshot = await get(usersQuery);
+          if (snapshot.exists()) {
+              const users = snapshot.val();
+              // Extract the keys from the snapshot which are the user IDs
+              const userIds = Object.keys(users);
+              console.log(userIds);
+              // Check if the userInstance is a valid index within the userIds array
+              if (userInstance >= 0 && userInstance < userIds.length) {
+                const userId = userIds[userInstance];
+                console.log(`User ID at instance ${userInstance}: ${userId}`);
+                return userId;
+              } else {
+                console.log(`No user found at instance ${userInstance}.`);
+                return null;
+              }
+          } else {
+              console.log('No users found.');
+              return null;
+          }
+      } catch (error) {
+          console.error('Error fetching user ID by instance:', error);
+          return null;
+      }
+    };
+
+
+
   
 
 
@@ -186,6 +271,7 @@ export const useUserOperations = () => {
     checkCredentials,
     fetchAllUserEmails,
     fetchAllUserPasswords,
-    isEmailInArray
+    fetchUserIdByInstance,
+    isEmailInArray,
   };
 };
