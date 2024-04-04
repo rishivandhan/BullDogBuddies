@@ -41,8 +41,6 @@ export const useEventOperations = () => {
       const eventsRef = ref(database, "events");
       const newEventRef = push(eventsRef);
 
-      fetchUser;
-
       console.log("Create Event Current User ID: ", currentUserId);
       // Set the new event data using the state values
       await set(newEventRef, {
