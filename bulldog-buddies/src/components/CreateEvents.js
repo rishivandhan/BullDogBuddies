@@ -1,6 +1,6 @@
 import React from 'react';
-import "./CreateEvents.css"
-import Sidebar from './sidebar';
+import "./CreateEvents.css";
+import Sidebar from "./sidebar";
 
 function CreateEvents() {
     function handleSubmit(e) {
@@ -18,34 +18,31 @@ function CreateEvents() {
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
       }
-    return(
+      return(
         <div className='CreateEvents'>
-            <div className='sidebar'>
-            <React.Fragment>
-                <Sidebar />
-            </React.Fragment>
-            </div>
-
-        <div className='form'>
-        <form method="post" onSubmit={handleSubmit}>
-      <label>
-        Text input: <input name="myInput" defaultValue="" />
-      </label>
-      <hr />
-      <label>
-        Checkbox: <input type="checkbox" name="myCheckbox" defaultChecked={true} />
-      </label>
-      <hr />
-      <p>
-        Radio buttons:
-        <label><input type="radio" name="myRadio" value="option1" /> Option 1</label>
-        <label><input type="radio" name="myRadio" value="option2" defaultChecked={true} /> Option 2</label>
-        <label><input type="radio" name="myRadio" value="option3" /> Option 3</label>
-      </p>
-      <hr />
-      <button type="reset">Reset form</button>
-      <button type="submit">Submit form</button>
-      </form>
+          <div className="sidebar">
+            <Sidebar />
+          </div>
+          <div className='form'>
+          <form method="post" onSubmit={handleSubmit}>
+            <label>
+              Text input: <input name="myInput" defaultValue="" />
+            </label>
+            <hr />
+            <label>
+              Checkbox: <input type="checkbox" name="myCheckbox" defaultChecked={true} />
+            </label>
+            <hr />
+            <p>
+              Radio buttons:
+              <label><input type="radio" name="myRadio" value="option1" /> Option 1</label>
+              <label><input type="radio" name="myRadio" value="option2" defaultChecked={true} /> Option 2</label>
+            <label><input type="radio" name="myRadio" value="option3" /> Option 3</label>
+            </p>
+            <hr />
+            <button type="reset">Reset form</button>
+            <button type="submit">Submit form</button>
+          </form>
         </div>
     </div>
     );
