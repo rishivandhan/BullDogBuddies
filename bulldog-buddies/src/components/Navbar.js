@@ -7,9 +7,9 @@ import Login from "./Login";
 import { database } from "../Firebase";
 import { push, ref, onValue, set, remove, update } from "firebase/database";
 import { useUserOperations } from "../FirebaseUserOperations";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-var userInstance = -1
+var userInstance = -1;
 var currentUserId = -1;
 
 function Navbar() {
@@ -20,8 +20,14 @@ function Navbar() {
   currentUserId = -1;
   userInstance = -1;
 
-  const { createUser, checkUserEmailExists, checkCredentials, fetchAllUserEmails, fetchAllUserPasswords, fetchUserIdByInstance } =
-    useUserOperations();
+  const {
+    createUser,
+    checkUserEmailExists,
+    checkCredentials,
+    fetchAllUserEmails,
+    fetchAllUserPasswords,
+    fetchUserIdByInstance,
+  } = useUserOperations();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -52,66 +58,63 @@ function Navbar() {
       console.log("Before user is created");
       try {
         console.log("Checking if user already exists");
-        
-        console.log(email === 'test3@gmail.com');
-        
-        const functionResult = fetchAllUserEmails(email).then(userEmails => {
-            console.log("User emails that are in the database: ", userEmails);
-            console.log("userEmails array length: ", userEmails.length);    
-            
-            var checkFlag = false;
-            
 
-            for (let i = 0; i < userEmails.length; i++) {
-                console.log("string iteration in userEmails array: ", userEmails[i]);
-                //  console.log(emailToCheck === userEmails[i]);
-                if (userEmails[i] === (email) ) {
-                    console.log("email is in the list");
-                    checkFlag = true; // Email found
-                    userInstance = i;
-                    console.log("checkFlag", checkFlag);
-                } else {
-                  console.log(" email is not in the list");
-                  console.log("checkFlag: ", checkFlag);
-                }
-            }
+        console.log(email === "test3@gmail.com");
 
-            console.log("return checkFlag", checkFlag);
-            if(!checkFlag)
-              userInstance = userEmails.length;
-            return checkFlag;
-          });
+        const functionResult = fetchAllUserEmails(email).then((userEmails) => {
+          console.log("User emails that are in the database: ", userEmails);
+          console.log("userEmails array length: ", userEmails.length);
 
-        functionResult.then(result => {
-            console.log("Is email in the list? ", result); // This will log true if email is in the list, otherwise false
+          var checkFlag = false;
 
-            if (result) {
-                alert("A user with this email already exists.");
+          for (let i = 0; i < userEmails.length; i++) {
+            console.log(
+              "string iteration in userEmails array: ",
+              userEmails[i]
+            );
+            //  console.log(emailToCheck === userEmails[i]);
+            if (userEmails[i] === email) {
+              console.log("email is in the list");
+              checkFlag = true; // Email found
+              userInstance = i;
+              console.log("checkFlag", checkFlag);
             } else {
-              createUser(username, email, password);
-              
-
-              console.log("userInstance before function" , userInstance);
-              const userInstanceBeforeFunction = userInstance;
-              fetchUserIdByInstance(userInstance).then(userId => {
-                currentUserId = userId;
-                userInstance = userInstanceBeforeFunction;
-
-                console.log("Current Signed-in User ID: ", currentUserId);
-                console.log("Current Signed-in User instance: ", userInstance);
-
-
-                // sign-in functionality
-                console.log("Creating new user");
-                
-                alert("User Successfully created");
-                SignUpPopup(false);
-                navigate('/CreateEvents')
-                
-              });
+              console.log(" email is not in the list");
+              console.log("checkFlag: ", checkFlag);
             }
+          }
 
-        })        
+          console.log("return checkFlag", checkFlag);
+          if (!checkFlag) userInstance = userEmails.length;
+          return checkFlag;
+        });
+
+        functionResult.then((result) => {
+          console.log("Is email in the list? ", result); // This will log true if email is in the list, otherwise false
+
+          if (result) {
+            alert("A user with this email already exists.");
+          } else {
+            createUser(username, email, password);
+
+            console.log("userInstance before function", userInstance);
+            const userInstanceBeforeFunction = userInstance;
+            fetchUserIdByInstance(userInstance).then((userId) => {
+              currentUserId = userId;
+              userInstance = userInstanceBeforeFunction;
+
+              console.log("Current Signed-in User ID: ", currentUserId);
+              console.log("Current Signed-in User instance: ", userInstance);
+
+              // sign-in functionality
+              console.log("Creating new user");
+
+              alert("User Successfully created");
+              SignUpPopup(false);
+              navigate("/CreateEvents");
+            });
+          }
+        });
       } catch (error) {
         console.error("Error during signup:", error);
         alert("An error occurred during signup.");
@@ -133,103 +136,88 @@ function Navbar() {
     console.log("stored user login details");
     //checkCredentials(username, password);
     try {
-        console.log("Checking if user exists");
-        
-        // this is to check for the email
-        const functionEmailsResult = fetchAllUserEmails(email).then(userEmails => {
-            console.log("User emails that are in the database: ", userEmails);
-            console.log("userEmails array length: ", userEmails.length);    
-            
-            var checkFlag = false;
-            userInstance = -1;
+      console.log("Checking if user exists");
 
-            for (let i = 0; i < userEmails.length; i++) {
-                console.log("string iteration in userEmails array: ", userEmails[i]);
-                //  console.log(emailToCheck === userEmails[i]);
-                if (userEmails[i] === (email) ) {
-                    console.log("email is in the list");
-                    checkFlag = true; // Email found
-                    userInstance = i;
-                    console.log("userInstance", userInstance);
+      // this is to check for the email
+      const functionEmailsResult = fetchAllUserEmails(email).then(
+        (userEmails) => {
+          console.log("User emails that are in the database: ", userEmails);
+          console.log("userEmails array length: ", userEmails.length);
 
-                } else {
-                  console.log(" email is not in the list");
-                  console.log("userInstance", userInstance);
-                }
+          var checkFlag = false;
+          userInstance = -1;
+
+          for (let i = 0; i < userEmails.length; i++) {
+            console.log(
+              "string iteration in userEmails array: ",
+              userEmails[i]
+            );
+            //  console.log(emailToCheck === userEmails[i]);
+            if (userEmails[i] === email) {
+              console.log("email is in the list");
+              checkFlag = true; // Email found
+              userInstance = i;
+              console.log("userInstance", userInstance);
+            } else {
+              console.log(" email is not in the list");
+              console.log("userInstance", userInstance);
             }
+          }
 
-            console.log("returning userInstance:", userInstance);
-            return userInstance;
+          console.log("returning userInstance:", userInstance);
+          return userInstance;
 
-            // password check
-            console.log()
+          // password check
+          console.log();
+        }
+      );
 
+      // This is to check for the password
+      functionEmailsResult.then((result) => {
+        console.log("The instance of the email in the list is:  ", result); // This will log true if email is in the list, otherwise false
 
-          });
-        
+        if (result > -1) {
+          console.log("this email exists.");
 
-        // This is to check for the password
-        functionEmailsResult.then(result => {
-            console.log("The instance of the email in the list is:  ", result); // This will log true if email is in the list, otherwise false
+          // checking to see if the password is correct in that user with existing
+          const funtionPasswordResult = fetchAllUserPasswords().then(
+            (userPasswords) => {
+              console.log("The usesr's password is: " + userPasswords[result]);
 
-            if (result > -1) {
-                console.log("this email exists.");
+              if (userPasswords[result] === password) {
+                fetchUserIdByInstance(userInstance).then((userId) => {
+                  currentUserId = userId;
+                  console.log("Current User ID: ", currentUserId);
 
-                // checking to see if the password is correct in that user with existing
-                const funtionPasswordResult = fetchAllUserPasswords().then(userPasswords => {
-                    console.log("The usesr's password is: " + userPasswords[result]);
-                    
-                    if ( userPasswords[result] === password) {
-                        
-                        
-                        
-                        fetchUserIdByInstance(userInstance).then(userId => {
-                          currentUserId = userId;
-                          console.log("Current User ID: ", currentUserId);
-
-
-                          // login functionality
-                          console.log("You entered the correct password");
-                          alert("login Success!");
-                          navigate('/CreateEvents')
-                          LoginPopup(false)
-                        });
-
-                        
-                        
-                        
-                        // implement more login button code here
-
-                        return true;
-                    } else {
-                        console.log("wrong password");
-                        alert("Wrong password");
-                        return false;
-                    }
+                  // login functionality
+                  console.log("You entered the correct password");
+                  alert("login Success!");
+                  navigate("/CreateEvents");
+                  LoginPopup(false);
                 });
 
+                // implement more login button code here
 
-                
-            } else {
-              console.log("A user with that email does not exist, Please sign up!");
-              alert("A user with that email does not exist, Please sign up!");
+                return true;
+              } else {
+                console.log("wrong password");
+                alert("Wrong password");
+                return false;
+              }
             }
-
-        })        
-      } catch (error) {
-        console.error("Error during login:", error);
-        alert("An error occurred during logging in.");
-      }
-
-      
-
-
-
+          );
+        } else {
+          console.log("A user with that email does not exist, Please sign up!");
+          alert("A user with that email does not exist, Please sign up!");
+        }
+      });
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during logging in.");
+    }
 
     return;
   }
-
-  
 
   return (
     <header>
@@ -250,12 +238,12 @@ function Navbar() {
           <form onSubmit={handleLoginFormSubmit}>
             <label>
               email:
-              <input type="text"  id = "email" name = "email"/>
+              <input type="text" id="email" name="email" />
             </label>
             <br />
             <label>
               Password:
-              <input type="text" id = "password" name = "password"/>
+              <input type="text" id="password" name="password" />
             </label>
             <br />
 
@@ -300,11 +288,9 @@ function Navbar() {
               className="submit-signup-button"
             >
               Sign Up
-            </button> 
-            
-            <br></br>
+            </button>
 
-            
+            <br></br>
           </form>
         </Signup>
 
@@ -317,9 +303,7 @@ function Navbar() {
       </button>
     </header>
   );
-
-  
 }
 
-export {userInstance, currentUserId}
+export { userInstance, currentUserId };
 export default Navbar;

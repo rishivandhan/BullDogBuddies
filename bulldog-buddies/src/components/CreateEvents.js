@@ -51,6 +51,8 @@ function CreateEvents() {
         </React.Fragment>
       </div>
 
+      <div className="Current-User-ID"></div>
+
       <div className="form">
         <form onSubmit={handleEventCreate}>
           <label>
@@ -86,9 +88,8 @@ function CreateEvents() {
             <br />
           </label>
 
-          <button type="reset">Reset form</button>
           <button type="submit" id="submit-event-button">
-            Submit form
+            Create Event
           </button>
         </form>
       </div>
