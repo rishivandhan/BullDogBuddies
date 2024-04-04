@@ -10,7 +10,7 @@ function Home() {
   return (
     <div class="home-container">
       <Navbar />
-      <div class="page-heading">
+      <div class="left-side">
         <h1>Whats your next event?</h1>
         <h3 class="Page-subheading">
           The easiest way for finding your next

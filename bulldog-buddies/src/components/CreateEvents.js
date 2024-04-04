@@ -19,32 +19,29 @@ function CreateEvents() {
         console.log(formJson);
       }
       return(
-        <div className='CreateEvents'>
+        <div className="createEvents-container">
           <div className="sidebar">
             <Sidebar />
           </div>
-          <div className='form'>
-          <form method="post" onSubmit={handleSubmit}>
-            <label>
-              Text input: <input name="myInput" defaultValue="" />
-            </label>
-            <hr />
-            <label>
-              Checkbox: <input type="checkbox" name="myCheckbox" defaultChecked={true} />
-            </label>
-            <hr />
-            <p>
-              Radio buttons:
-              <label><input type="radio" name="myRadio" value="option1" /> Option 1</label>
-              <label><input type="radio" name="myRadio" value="option2" defaultChecked={true} /> Option 2</label>
-            <label><input type="radio" name="myRadio" value="option3" /> Option 3</label>
-            </p>
-            <hr />
-            <button type="reset">Reset form</button>
-            <button type="submit">Submit form</button>
-          </form>
+          <div className="create-display">
+            <div className="create-title">
+              <h3>Create an Event</h3>
+            </div>
+            <div className='form'>
+              <form method="post" onSubmit={handleSubmit}>
+                <label>
+                  Title: <input className="form-input" name="myInput" defaultValue="" />
+                  Type: <input className="form-input"  name="myInput" defaultValue="" />
+                  Location: <input className="form-input" name="myInput" defaultValue="" />
+                  Description: <input className="form-input" name="myInput" defaultValue="" />
+                </label>
+                <hr />
+                <button type="reset">Reset form</button>
+                <button type="submit">Submit form</button>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
     );
 }
 

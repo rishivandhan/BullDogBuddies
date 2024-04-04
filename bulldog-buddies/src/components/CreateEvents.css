@@ -1,15 +1,38 @@
 * {
     box-sizing: border-box;
   }
-  /* Adjust the content margin to leave space for the sidebar */
-.form {
-  margin-left: 220px; /* Adjust as needed based on the width of the sidebar */
-  padding: 20px; /* Add padding for better spacing */
-}
 
 /* Ensure the form is not hidden behind the sidebar */
-form {
-  background-color: #fff; /* Set a white background to distinguish form from sidebar */
+form label{
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  border-radius: 10px;
+  height: 40px;
+  background-color: var(--selectColor);
+  border: none;
+}
+.createEvents-container{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.create-title {
+  height: 8rem;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+}
+.create-title h3 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.create-display {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 body {
   font-family: sans-serif;
