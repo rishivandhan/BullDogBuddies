@@ -37,7 +37,6 @@ export const useEventOperations = () => {
     time
   ) => {
     try {
-      console.log("This is Reached");
       // Reference to events in the database
       const eventsRef = ref(database, "events");
       const newEventRef = push(eventsRef);

@@ -7,7 +7,6 @@ function CreateEvents() {
   const { createEvent } = useEventOperations();
 
   function handleEventCreate(e) {
-    console.log("submit was clicked");
     e.preventDefault();
 
     //constant stores values entered into textbox
