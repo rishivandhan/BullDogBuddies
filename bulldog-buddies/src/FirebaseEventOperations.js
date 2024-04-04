@@ -1,7 +1,7 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useRef } from "react";
-
 import { database } from "./Firebase";
+import { currentUserId } from "./components/Navbar";
 import {
   push,
   ref,
@@ -41,6 +41,9 @@ export const useEventOperations = () => {
       const eventsRef = ref(database, "events");
       const newEventRef = push(eventsRef);
 
+      fetchUser;
+
+      console.log("Create Event Current User ID: ", currentUserId);
       // Set the new event data using the state values
       await set(newEventRef, {
         title: title,
@@ -54,7 +57,7 @@ export const useEventOperations = () => {
 
       // Store the event ID (key) in state
       setEventId(newEventRef.key);
-
+      console.log("Creatd Event ID: ", newEventRef.key);
       // Reset event state and alert user of success
       setEventTitle("");
       setEventDescription("");
@@ -67,6 +70,8 @@ export const useEventOperations = () => {
       console.error("Firebase error: ", error);
       alert("There was a problem creating the event.");
     }
+
+    //function to add events to the user
   };
 
   // Returned state hooks

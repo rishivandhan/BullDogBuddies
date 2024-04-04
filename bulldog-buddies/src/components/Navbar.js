@@ -193,7 +193,10 @@ function Navbar() {
                   console.log("You entered the correct password");
                   alert("login Success!");
                   navigate("/CreateEvents");
+
                   LoginPopup(false);
+                  console.log("Event Created Current User ID: ", currentUserId);
+                  return currentUserId;
                 });
 
                 // implement more login button code here
