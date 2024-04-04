@@ -106,6 +106,7 @@ function Navbar() {
               console.log("Current Signed-in User ID: ", currentUserId);
               console.log("Current Signed-in User instance: ", userInstance);
 
+              localStorage.setItem("currentUserId", currentUserId);
               // sign-in functionality
               console.log("Creating new user");
 
@@ -189,6 +190,7 @@ function Navbar() {
                   currentUserId = userId;
                   console.log("Current User ID: ", currentUserId);
 
+                  localStorage.setItem("currentUserId", currentUserId);
                   // login functionality
                   console.log("You entered the correct password");
                   alert("login Success!");

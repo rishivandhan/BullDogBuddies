@@ -9,6 +9,7 @@ function CreateEvents() {
   function handleEventCreate(e) {
     e.preventDefault();
 
+    var currentUserId = localStorage.getItem("currentUserId");
     //constant stores values entered into textbox
     const title = document.getElementById("Title").value;
     const ExpirationTime = document.getElementById("ExpirationTime").value;
@@ -32,6 +33,7 @@ function CreateEvents() {
       alert("Please fill in all the required fields");
       return;
     } else {
+      currentUserId = localStorage.getItem("currentUserId");
       createEvent(
         title,
         ExpirationTime,
@@ -41,6 +43,7 @@ function CreateEvents() {
         time
       );
       alert("event Created Successfully");
+      console.log("this is the current User ID: ", currentUserId);
     }
   }
   return (
