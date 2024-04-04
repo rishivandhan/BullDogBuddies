@@ -1,23 +1,39 @@
 import React from 'react';
 import "./CreateEvents.css"
 import Sidebar from './sidebar';
+import { useEventOperations } from '../FirebaseEventOperations';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function CreateEvents() {
-    function handleSubmit(e) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
-    
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-    
-        // You can pass formData as a fetch body directly:
-        fetch('/some-api', { method: form.method, body: formData });
-    
-        // Or you can work with it as a plain object:
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
+
+    //const { bring in functions from firebaseeventOperations} = useEventOperations(); 
+
+  
+    function handleEventCreate(e) {
+        
+      console("submit was clicked");
+      e.preventDefault();
+
+
+      //constant stores values entered into textbox
+      const title = document.getElementById("Title");
+      const ExpirationTime = document.getElementById("ExpirationTime");
+      const description = document.getElementById("description");
+      const location = document.getElementById("location");
+      const eventPeopleRegistered = document.getElementById("eventPeopleRegistered");
+      const time = document.getElementById("Time");
+      const Limit = document.getElementById("Limit");
+      
+
+      //check to see if fields were entered
+      if(!title || !ExpirationTime || !description || !location || !eventPeopleRegistered || !time || !Limit){
+        alert("Please fill in all the required fields");
+        return;
       }
+
+    }
     return(
         <div className='CreateEvents'>
             <div className='sidebar'>
@@ -27,31 +43,23 @@ function CreateEvents() {
             </div>
 
         <div className='form'>
-        <form method="post" onSubmit={handleSubmit}>
+        <form method="post" onSubmit={handleEventCreate}>
+
+
       <label>
-        Title: <input name="eventTitle" defaultValue="" /> <br />
-        Expiration Time: <input name="eventExpirationTime" defaultValue="" /> <br />
-        Description: <input name="Descriptio" defaultValue="" /><br />
-        Location: <input name="eventLocation" defaultValue="" /><br />
-        Number of People to Resgister: <input name="eventPeopleRegistered" defaultValue="" /><br />
-        Time: <input name="eventTitle" defaultValue="" />  <br /> {/*come back later. not a text input. need a checkbox for am and pm*/  }  
-        Number of People Limit: <input name="PeopleLimit" defaultValue="" /><br />
+        Title: <input name="eventTitle" defaultValue="" id = "Title"/> <br />
+        Expiration Time: <input name="eventExpirationTime" defaultValue="" id = "ExpirationTime"/> <br />
+        Description: <input name="Descriptio" defaultValue="" id = "description"/><br />
+        Location: <input name="eventLocation" defaultValue="" id = "location"/><br />
+        Number of People to Resgister: <input name="eventPeopleRegistered" defaultValue="" id = "PeopleRegistered"/><br />
+        Time: <input name="eventTitle" defaultValue="" id = "Time"/>  <br /> {/*come back later. not a text input. need a checkbox for am and pm*/  }  
+        Number of People Limit: <input name="PeopleLimit" defaultValue="" id ="Limit" /><br />
 
       </label>
-      <hr />
-      <label>
-        Checkbox: <input type="checkbox" name="myCheckbox" defaultChecked={true} />
-      </label>
-      <hr />
-      <p>
-        Radio buttons:
-        <label><input type="radio" name="myRadio" value="option1" /> Option 1</label>
-        <label><input type="radio" name="myRadio" value="option2" defaultChecked={true} /> Option 2</label>
-        <label><input type="radio" name="myRadio" value="option3" /> Option 3</label>
-      </p>
-      <hr />
+
+
       <button type="reset">Reset form</button>
-      <button type="submit">Submit form</button>
+      <button type="submit" id = "submit-event-button">Submit form</button>
       </form>
         </div>
     </div>
