@@ -1,27 +1,28 @@
-/* The side navigation menu */
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-  z-index: 1;
+  width: 18rem;
+  background-color: var(--secondaryColor);
+  position: right;
+  height: 80vh;
+  overflow: hidden;
 }
-
+ul {
+  list-style-type: none;
+}
 /* Sidebar links */
 .sidebar a {
   display: block;
   color: black;
+  height: 65px;
   padding: 16px;
+  margin-top: 0;
   text-decoration: none;
+  align-content: center;
 }
 
 /* Active/current link */
 .sidebar a.active {
-  background-color: #04AA6D;
-  color: white;
+  background-color: var(--selectColor);
+  color: black;
 }
 
 /* Links on mouse-over */
@@ -32,8 +33,6 @@
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
 div.content {
-  margin-left: 200px;
-  padding: 1px 16px;
   height: 1000px;
 }
 

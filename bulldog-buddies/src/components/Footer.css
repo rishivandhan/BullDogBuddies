@@ -3,6 +3,9 @@
 }
 .footer{
     background-color: #FF4040;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 .sb__footer{
     display: flex;
