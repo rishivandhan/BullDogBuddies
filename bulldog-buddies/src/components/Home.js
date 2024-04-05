@@ -7,6 +7,10 @@ import partyPicture from "../Assets/party-pana 1.jpg";
 function Home() {
   return (
     <div class="home-container">
+<<<<<<< HEAD
+=======
+      <Navbar />
+>>>>>>> parent of 730f396 (toni-updates)
       <div class="page-heading">
         <h1>Whats your next event?</h1>
         <h3 class="Page-subheading">
