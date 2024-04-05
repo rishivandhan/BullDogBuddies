@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+  }
+
+/* Ensure the form is not hidden behind the sidebar */
+form label{
+  background-color: var(--secondaryColor);
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  border-radius: 10px;
+  height: 40px;
+  background-color: var(--selectColor);
+  border: none;
+}
+.createEvents-container{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.create-title {
+  height: 8rem;
+  justify-content: center;
+  align-content: center;
+  width: 80%;
+}
+.create-title h3 {
+  font-weight: 600;
+  font-size: 40px;
+}
+.create-display {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+  
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+  
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+  
+  h5 {
+    margin-top: 0;
+    font-size: 14px;
+  }
+  
+  h6 {
+    margin-top: 0;
+    font-size: 12px;
+  }
+  
+  code {
+    font-size: 1.2em;
+  }
+  
+  ul {
+    padding-inline-start: 20px;
+  }
+  
+  label { display: block; }
+  input { margin: 5px; }
