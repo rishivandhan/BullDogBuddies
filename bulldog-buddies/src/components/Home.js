@@ -7,8 +7,6 @@ import "./Navbar.css";
 import { ReactTyped } from 'react-typed';
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
-import Navbar from './Navbar';
-import Footer from './Footer';
 
 function Home() {
   return (

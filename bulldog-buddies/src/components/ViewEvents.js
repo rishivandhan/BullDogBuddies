@@ -3,8 +3,6 @@ import "./ViewEvents.css"
 import Sidebar from './sidebar';
 import { Card } from 'react-bootstrap';
 import ItemsSlider from './ItemsSlider'
-import Sidebar from "./sidebar";
-
 
 function ViewEvents() {
   const topDealsItems = [
