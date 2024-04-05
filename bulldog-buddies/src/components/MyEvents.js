@@ -1,11 +1,22 @@
 import React from 'react';
-import "./MyEvents.css"
-import Sidebar from './sidebar';
+import Link from 'react-router-dom';
+import "./Navbar.css";
+import "./MyEvents.css";
+
+import Sidebar from "./sidebar";
+
 
 function MyEvents(){
     return(
-        <div>
-            <Sidebar />
+         <div className="my-events-container">
+            <div className="sidebar">
+            <React.Fragment>
+                <Sidebar />
+            </React.Fragment>
+            </div>
+            <div className="main">
+                <h1> Hello </h1>
+            </div>
         </div>
     );
 }
