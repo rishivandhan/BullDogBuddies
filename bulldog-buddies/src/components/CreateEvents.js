@@ -17,6 +17,7 @@ function CreateEvents() {
         // Or you can work with it as a plain object:
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
+        
       }
       return(
         <div className="createEvents-container">
@@ -27,18 +28,26 @@ function CreateEvents() {
             <div className="create-title">
               <h3>Create an Event</h3>
             </div>
-            <div className='form'>
+            <div className="form-container">
               <form method="post" onSubmit={handleSubmit}>
                 <label>
-                  Title: <input className="form-input" name="myInput" defaultValue="" />
-                  Type: <input className="form-input"  name="myInput" defaultValue="" />
-                  Location: <input className="form-input" name="myInput" defaultValue="" />
-                  Description: <input className="form-input" name="myInput" defaultValue="" />
+                  Title: <input className="form-input" name="myInput" defaultValue="" required/>
                 </label>
-                <hr />
-                <button type="reset">Reset form</button>
-                <button type="submit">Submit form</button>
+                <label>
+                  Type: <input className="form-input"  name="myInput" defaultValue="" required/>
+                </label>
+                <label>
+                  Location: <input className="form-input" name="myInput" defaultValue="" required/>
+                </label>
+                <label>
+                  Description: <textarea className="form-description" name="myInput" defaultValue="" required/>
+                </label>
               </form>
+              <hr />
+              <div className="buttons-container">
+                <button className="submitButton" type="reset">Reset form</button>
+                <button className="submitButton" type="submit">Submit form</button>
+              </div>
             </div>
           </div>
         </div>

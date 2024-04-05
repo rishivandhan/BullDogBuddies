@@ -3,7 +3,8 @@
   background-color: var(--secondaryColor);
   position: relative;
   left: -14px;
-  height: 80vh;
+  height: 100vh;
+  padding-top:0;
   overflow: hidden;
 }
 ul {
@@ -20,19 +21,25 @@ ul {
   align-content: center;
 }
 .sidebar h3{
+  height: 80px;
+  align-content: center;
   padding-left: 47px;
+  font-size: 28px;
 }
 
 /* Active/current link */
 .sidebar a.active {
   background-color: var(--selectColor);
   color: black;
+  width: 100%;
 }
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
   background-color: #555;
+  width: 100%;
   color: white;
+  transition: ease-in 0.15s;
 }
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
