@@ -1,19 +1,18 @@
 import React from "react";
+import Navbar from "./Navbar"
+import Footer from "./Footer"
 import "./Home.css";
+import "./Footer.css";
+import "./Navbar.css";
 import { ReactTyped } from 'react-typed';
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
 
 function Home() {
   return (
+    
     <div class="home-container">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       <Navbar />
->>>>>>> parent of 730f396 (toni-updates)
-=======
->>>>>>> parent of 08841be (tonis-updates)
       <div class="page-heading">
         <h1>Whats your next event?</h1>
         <h3 class="Page-subheading">
@@ -41,6 +40,11 @@ function Home() {
         <h3 class="Page-subheading">
           Connect with students and people in your city
         </h3>
+      </div>
+      <div class="footer">
+        <React.Fragment>
+          <Footer />
+        </React.Fragment>
       </div>
     </div>
   );

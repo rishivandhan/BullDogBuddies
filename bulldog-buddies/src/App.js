@@ -17,7 +17,7 @@ function App() {
     </React.Fragment>
     <Routes>
       <Route path="*" element={<Home/>} />
-      <Route path="/MyEvents" element ={<MyEvents />} />
+      <Route path="/MyEvents" element ={<MyEvents />} /> 
       <Route path="/CreateEvents" element ={<CreateEvents />} />
       <Route path="/ViewEvents" element ={<ViewEvents />} />
     </Routes>
