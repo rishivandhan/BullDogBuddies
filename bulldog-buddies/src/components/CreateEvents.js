@@ -17,7 +17,6 @@ function CreateEvents() {
         // Or you can work with it as a plain object:
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
-        
       }
       return(
         <div className="createEvents-container">
