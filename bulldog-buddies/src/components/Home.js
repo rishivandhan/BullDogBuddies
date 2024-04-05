@@ -3,23 +3,20 @@ import "./Home.css";
 import { ReactTyped } from 'react-typed';
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 function Home() {
   return (
     <div class="home-container">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       <Navbar />
->>>>>>> parent of 730f396 (toni-updates)
-=======
->>>>>>> parent of 08841be (tonis-updates)
-      <div class="page-heading">
-        <h1>Whats your next event?</h1>
-        <h3 class="Page-subheading">
-          The easiest way for finding your next
-        </h3>
-        <h3 className="body-highlight">
+      <div class="left-side">
+        <div class="page-heading">
+          <h1>Whats your next event?</h1>
+          <h3 class="Page-subheading">
+            The easiest way for finding your next
+          </h3>
+          <h3 className="body-highlight">
           <ReactTyped
             strings={[
               "tennis partner",
@@ -31,7 +28,8 @@ function Home() {
             backSpeed={100}
             loop
           />
-        </h3>
+          </h3>
+        </ div>
         <div class="welcome-Picture">
           <img src={partyPicture} alt="welcome-picture" />
         </div>
@@ -42,6 +40,7 @@ function Home() {
           Connect with students and people in your city
         </h3>
       </div>
+      <Footer />
     </div>
   );
 }
