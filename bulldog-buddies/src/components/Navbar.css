@@ -3,12 +3,9 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    width: 100%;
     padding: 0 3rem;
     background-color: white;
     color: var(--textColor);
-    top: 0;
-    position: absolute;
 }
 nav a {
     margin: 0 1rem;
