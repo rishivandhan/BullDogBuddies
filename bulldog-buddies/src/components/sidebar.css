@@ -1,7 +1,8 @@
 .sidebar {
-  width: 18rem;
+  width: 20%;
   background-color: var(--secondaryColor);
-  position: right;
+  position: relative;
+  left: -14px;
   height: 80vh;
   overflow: hidden;
 }
@@ -13,10 +14,13 @@ ul {
   display: block;
   color: black;
   height: 65px;
-  padding: 16px;
+  padding: 35px;
   margin-top: 0;
   text-decoration: none;
   align-content: center;
+}
+.sidebar h3{
+  padding-left: 47px;
 }
 
 /* Active/current link */
