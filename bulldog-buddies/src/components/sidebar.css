@@ -39,7 +39,7 @@ ul {
   background-color: #555;
   width: 100%;
   color: white;
-  transition: ease-in 0.15s;
+  transition: ease-in-out 0.15s;
 }
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
