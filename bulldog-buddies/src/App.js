@@ -1,17 +1,16 @@
 import React from "react";
 import Home from "./components/Home";
+import MyEvents from "./components/MyEvents";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import CreateEvents from "./components/CreateEvents";
+import ViewEvents from "./components/ViewEvents";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <Navbar />
-      <Home />
-      <Footer />
-=======
+
     <div>
     <React.Fragment>
       <Navbar />
@@ -25,7 +24,6 @@ function App() {
     <React.Fragment>
     <Footer />
     </React.Fragment>
->>>>>>> parent of 08841be (tonis-updates)
     </div>
   );
 }
