@@ -8,9 +8,12 @@ function Home() {
   return (
     <div class="home-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <Navbar />
 >>>>>>> parent of 730f396 (toni-updates)
+=======
+>>>>>>> parent of 08841be (tonis-updates)
       <div class="page-heading">
         <h1>Whats your next event?</h1>
         <h3 class="Page-subheading">
