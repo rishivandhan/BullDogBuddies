@@ -2,8 +2,10 @@ import React from "react";
 import "./CreateEvents.css";
 import Sidebar from "./sidebar";
 import { useEventOperations } from "../FirebaseEventOperations";
+import { useNavigate } from "react-router-dom";
 
 function CreateEvents() {
+  const navigate = useNavigate();
   const { createEvent } = useEventOperations();
 
   function handleEventCreate(e) {
@@ -33,19 +35,41 @@ function CreateEvents() {
       alert("Please fill in all the required fields");
       return;
     } else {
-      currentUserId = localStorage.getItem("currentUserId");
+      currentUserId = localStorage.getItem("currentUserId"); //stores the current User ID --> must use this to user on database.
+      if (!currentUserId) {
+        alert("This userID is non-existent --> Please make an account");
+        return;
+      }
+
       createEvent(
         title,
         ExpirationTime,
         description,
         location,
         eventPeopleRegistered,
-        time
+        time,
+        currentUserId
       );
+
+      // document.getElementById("Title").value = "";
+      // document.getElementById("ExpirationTime").value = "";
+      // document.getElementById("description").value = "";
+      // document.getElementById("location").value = "";
+      // document.getElementById("peopleRegistered").value = "";
+      // document.getElementById("Time").value = "";
+      // document.getElementById("Limit").value = "";
+
       alert("event Created Successfully");
       console.log("this is the current User ID: ", currentUserId);
     }
   }
+
+  function handleLogout() {
+    localStorage.removeItem("currentUserID");
+    alert("Logout Successfull");
+    navigate("/");
+  }
+
   return (
     <div className="CreateEvents">
       <div className="sidebar">
@@ -94,6 +118,11 @@ function CreateEvents() {
           <button type="submit" id="submit-event-button">
             Create Event
           </button>
+          <div>
+            <button type="logout" id="logout" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         </form>
       </div>
     </div>

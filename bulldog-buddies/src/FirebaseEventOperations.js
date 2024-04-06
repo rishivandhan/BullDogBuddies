@@ -1,7 +1,6 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useRef } from "react";
 import { database } from "./Firebase";
-import { currentUserId } from "./components/Navbar";
 import {
   push,
   ref,
@@ -19,6 +18,7 @@ import {
 
 export const useEventOperations = () => {
   // State hooks for event attributes
+
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventLocation, setEventLocation] = useState("");
@@ -34,11 +34,16 @@ export const useEventOperations = () => {
     description,
     location,
     eventPeopleRegistered,
-    time
+    time,
+    currentUserId
   ) => {
     try {
       // Reference to events in the database
-      const eventsRef = ref(database, "events");
+      console.log(
+        "the current user id imported in EventOperations:",
+        currentUserId
+      );
+      const eventsRef = ref(database, `events`);
       const newEventRef = push(eventsRef);
 
       // Set the new event data using the state values
@@ -55,6 +60,24 @@ export const useEventOperations = () => {
       // Store the event ID (key) in state
       setEventId(newEventRef.key);
       console.log("Creatd Event ID: ", newEventRef.key);
+
+      //store the event ID (key) py passing in currentUserID
+      try {
+        const userRef = ref(
+          database,
+          `users/${currentUserId}/UserCreatedEvents`
+        );
+        //const newUserRef = push(userRef);
+
+        await set(child(userRef, newEventRef.key), {
+          eventID: newEventRef.key,
+        });
+        console.log("Event successfully aded in user");
+      } catch {
+        console.log("Failed to add events to subtable");
+        alert("Failed to add events to subtable");
+      }
+
       // Reset event state and alert user of success
       setEventTitle("");
       setEventDescription("");
