@@ -42,6 +42,9 @@ function Home() {
         <h3 class="Page-subheading">
           Connect with students and people in your city
         </h3>
+        <button className="signup-btn" /*onClick={() => SignUpPopup(true)} */>
+          Sign up now!
+        </button>
       </div>
       <Footer />
     </div>
