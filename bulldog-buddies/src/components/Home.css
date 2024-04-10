@@ -1,0 +1,30 @@
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    padding: 8rem;
+    background-color: white;
+    color: var(--textColor);
+}
+.left-side{
+    align-items: center;
+    font-size: 48px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+    align-content: center;
+}
+.welcome-Picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.highFive-Picture{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
