@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import "./CreateEvents.css";
 import Sidebar from "./sidebar";
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateEvents() {
   const navigate = useNavigate();
-  const { createEvent } = useEventOperations();
+  const { createRSVPEvent } = useEventOperations();
 
   function handleEventCreate(e) {
     e.preventDefault();
@@ -42,7 +41,7 @@ function CreateEvents() {
         return;
       }
 
-      createEvent(
+      createRSVPEvent(
         title,
         ExpirationTime,
         description,
@@ -67,122 +66,98 @@ function CreateEvents() {
 
   function handleLogout() {
     localStorage.removeItem("currentUserID");
+
     alert("Logout Successfull");
     navigate("/");
   }
 
   return (
-    <div className="CreateEvents">
+    <div className="createEvents-container">
       <div className="sidebar">
-        <React.Fragment>
-          <Sidebar />
-        </React.Fragment>
+        <Sidebar />
       </div>
-
-      <div className="Current-User-ID"></div>
-
-      <div className="form">
-        <form onSubmit={handleEventCreate}>
-          <label>
-            Title: <input name="eventTitle" defaultValue="" id="Title" /> <br />
-            Expiration Time:{" "}
-            <input
-              name="eventExpirationTime"
-              defaultValue=""
-              id="ExpirationTime"
-            />{" "}
-            <br />
-            Description:{" "}
-            <input name="Description" defaultValue="" id="description" />
-            <br />
-            Location:{" "}
-            <input name="eventLocation" defaultValue="" id="location" />
-            <br />
-            Number of People to Resgister:{" "}
-            <input
-              name="eventPeopleRegistered"
-              defaultValue=""
-              id="PeopleRegistered"
-            />
-            <br />
-            Time: <input
-              name="eventTitle"
-              defaultValue=""
-              id="Time"
-            /> <br />{" "}
-            {/*come back later. not a text input. need a checkbox for am and pm*/}
-            Number of People Limit:{" "}
-            <input name="PeopleLimit" defaultValue="" id="Limit" />
-            <br />
-          </label>
-
-          <button type="submit" id="submit-event-button">
-            Create Event
-          </button>
-          <div>
-            <button type="logout" id="logout" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        </form>
+      <div className="create-display">
+        <div className="create-title">
+          <h3>Create an Event</h3>
+        </div>
+        <div className="Current-User-ID"></div>
+        <div className="form-container">
+          <form onSubmit={handleEventCreate}>
+            <label>
+              Title:{" "}
+              <input
+                className="form-input"
+                name="eventTitle"
+                defaultValue=""
+                id="Title"
+              />{" "}
+              <br />
+              Expiration Time:{" "}
+              <input
+                className="form-input"
+                name="eventExpirationTime"
+                defaultValue=""
+                id="ExpirationTime"
+              />{" "}
+              <br />
+              Description:{" "}
+              <input
+                className="form-input"
+                name="Description"
+                defaultValue=""
+                id="description"
+              />
+              <br />
+              Location:{" "}
+              <input
+                className="form-input"
+                name="eventLocation"
+                defaultValue=""
+                id="location"
+              />
+              <br />
+              Number of People to Resgister:{" "}
+              <input
+                className="form-input"
+                name="eventPeopleRegistered"
+                defaultValue=""
+                id="PeopleRegistered"
+              />
+              <br />
+              Time:{" "}
+              <input
+                className="form-input"
+                name="eventTitle"
+                defaultValue=""
+                id="Time"
+              />{" "}
+              <br />{" "}
+              {/*come back later. not a text input. need a checkbox for am and pm*/}
+              Number of People Limit:{" "}
+              <input
+                className="form-input"
+                name="PeopleLimit"
+                defaultValue=""
+                id="Limit"
+              />
+              <br />
+            </label>
+            <div className="buttons-container">
+              <button
+                className="submitButton"
+                type="submit"
+                id="submit-event-button"
+              >
+                Create Event
+              </button>
+              <button type="logout" id="logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
-=======
-import React from 'react';
-import "./CreateEvents.css";
-import Sidebar from "./sidebar";
-
-function CreateEvents() {
-    function handleSubmit(e) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
-    
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-    
-        // You can pass formData as a fetch body directly:
-        fetch('/some-api', { method: form.method, body: formData });
-    
-        // Or you can work with it as a plain object:
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
-      }
-      return(
-        <div className="createEvents-container">
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-          <div className="create-display">
-            <div className="create-title">
-              <h3>Create an Event</h3>
-            </div>
-            <div className="form-container">
-              <form method="post" onSubmit={handleSubmit}>
-                <label>
-                  Title: <input className="form-input" name="myInput" defaultValue="" required/>
-                </label>
-                <label>
-                  Type: <input className="form-input"  name="myInput" defaultValue="" required/>
-                </label>
-                <label>
-                  Location: <input className="form-input" name="myInput" defaultValue="" required/>
-                </label>
-                <label>
-                  Description: <textarea className="form-description" name="myInput" defaultValue="" required/>
-                </label>
-              </form>
-              <hr />
-              <div className="buttons-container">
-                <button className="submitButton" type="reset">Reset form</button>
-                <button className="submitButton" type="submit">Submit form</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    );
->>>>>>> origin/luke-changes-2
 }
-
 export default CreateEvents;

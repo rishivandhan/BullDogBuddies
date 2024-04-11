@@ -28,7 +28,7 @@ export const useEventOperations = () => {
   const [eventId, setEventId] = useState(""); // State hook for storing the event ID
 
   // Function to create a new event and store the event ID
-  const createEvent = async (
+  const createRSVPEvent = async (
     title,
     expirationTime,
     description,
@@ -67,12 +67,26 @@ export const useEventOperations = () => {
           database,
           `users/${currentUserId}/UserCreatedEvents`
         );
+        //refering to the RSVPEvents subtable in users
+        const userEventRef = ref(
+          database,
+          `users/${currentUserId}/UserRSVPEvents`
+        );
         //const newUserRef = push(userRef);
 
+        //push to the createvents subtable in users
         await set(child(userRef, newEventRef.key), {
           eventID: newEventRef.key,
         });
+
+        //push to the RSVPEvents substable in users
+        await set(child(userEventRef, newEventRef.key), {
+          RSVPEventID: newEventRef.key,
+        });
         console.log("Event successfully aded in user");
+        console.log(
+          "Event Successfully added in RSVP Events from user Creating Event"
+        );
       } catch {
         console.log("Failed to add events to subtable");
         alert("Failed to add events to subtable");
@@ -109,6 +123,6 @@ export const useEventOperations = () => {
     eventNumberOfPeopleLimit,
     setEventNumberOfPeopleLimit,
     eventId,
-    createEvent,
+    createRSVPEvent,
   };
 };

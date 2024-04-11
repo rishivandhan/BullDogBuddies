@@ -3,7 +3,7 @@
   background-color: var(--secondaryColor);
   position: relative;
   left: -14px;
-  height: 100vh;
+  height: auto;
   padding-top:0;
   overflow: hidden;
 }
