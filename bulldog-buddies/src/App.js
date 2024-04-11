@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import MyEvents from "./components/MyEvents";
 import CreateEvents from "./components/CreateEvents";
 import ViewEvents from "./components/ViewEvents";
+import About from "./components/About";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -12,6 +13,7 @@ function App() {
     <div>
     <Routes>
       <Route path="*" element={<Home/>} />
+      <Route path="/About" element={<About />} />
       <Route path="/MyEvents" element ={<MyEvents />} /> 
       <Route path="/CreateEvents" element ={<CreateEvents />} />
       <Route path="/ViewEvents" element ={<ViewEvents />} />

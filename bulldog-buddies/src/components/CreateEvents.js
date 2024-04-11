@@ -150,7 +150,7 @@ function CreateEvents() {
               >
                 Create Event
               </button>
-              <button type="logout" id="logout" onClick={handleLogout}>
+              <button className="logout-btn" type="logout" id="logout" onClick={handleLogout}>
                 Logout
               </button>
             </div>
