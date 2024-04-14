@@ -1,0 +1,72 @@
+
+.sidebar {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    z-index: 100;
+}
+
+.viewEvnts-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    }
+
+.view-display {
+    flex-grow: 1; 
+    background-color: #ff4136; 
+    padding-left: 270px; 
+    padding-top: 20px;
+    padding-right: 20px;
+    overflow-y: auto; 
+}
+
+.event-card {
+    background-color: #ffffff; 
+    color: #333333; 
+    margin: 10px 40px;
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}  
+
+.event-card:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+}
+
+.event-card .title {
+    font-size: 1.2em; 
+    margin-bottom: 0.5em;
+}
+
+
+.event-card .description,
+.event-card .time,
+.event-card .location,
+.event-card .participants {
+    font-size: 1em;
+    margin-bottom: 0.3em;
+    line-height: 1.4; 
+}
+
+.rsvp-button {
+    background-color: #555555; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+  
+.rsvp-button:hover {
+    background-color: #e93f3f;
+}
+  
+
+  

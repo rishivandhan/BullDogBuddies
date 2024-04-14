@@ -14,6 +14,7 @@ import {
   set,
   remove,
   update,
+  off
 } from "firebase/database";
 
 export const useEventOperations = () => {
@@ -94,6 +95,31 @@ export const useEventOperations = () => {
     //function to add events to the user
   };
 
+  // Function to set up a listener for event updates
+  const listenForEventUpdates = (updateFn) => {
+    const eventsRef = ref(database, 'events');
+    
+    onValue(eventsRef, (snapshot) => {
+      const events = snapshot.val();
+      updateFn(events);
+    });
+
+    // Return a function to unsubscribe from the events
+    return () => off(eventsRef);
+  };
+
+  // Component for rendering an individual event card
+  const EventCard = ({ event, onRsvp }) => (
+    <div className='event-card'>
+      <h2 className='title'>{event.title}</h2>
+      <p className='description'>{event.description}</p>
+      <p className='time'>Time: {event.time}</p>
+      <p className='location'>Location: {event.location}</p>
+      <p className='participants'>Participants: {event.numberOfPeopleRegistered}/{event.numberOfPeopleLimit}</p>
+      <button onClick={() => onRsvp(event)} className='rsvp-button'>RSVP</button>
+    </div>
+  );
+
   // Returned state hooks
   return {
     eventTitle,
@@ -110,5 +136,7 @@ export const useEventOperations = () => {
     setEventNumberOfPeopleLimit,
     eventId,
     createEvent,
+    listenForEventUpdates,
+    EventCard
   };
 };
