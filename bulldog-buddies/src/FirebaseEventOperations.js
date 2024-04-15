@@ -77,12 +77,26 @@ export const useEventOperations = () => {
 
         //push to the createvents subtable in users
         await set(child(userRef, newEventRef.key), {
-          eventID: newEventRef.key,
+          //eventID: newEventRef.key,
+          title: title,
+          description: description || "No description",
+          location: location,
+          time: time,
+          expirationTime: expirationTime,
+          numberOfPeopleLimit: eventPeopleRegistered,
+          numberOfPeopleRegistered: 0,
         });
 
         //push to the RSVPEvents substable in users
         await set(child(userEventRef, newEventRef.key), {
-          RSVPEventID: newEventRef.key,
+          //RSVPEventID: newEventRef.key,
+          title: title,
+          description: description || "No description",
+          location: location,
+          time: time,
+          expirationTime: expirationTime,
+          numberOfPeopleLimit: eventPeopleRegistered,
+          numberOfPeopleRegistered: 0,
         });
         console.log("Event successfully aded in user");
         console.log(
