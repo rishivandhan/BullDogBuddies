@@ -126,7 +126,15 @@ export const useEventOperations = () => {
     //function to add events to the user
   };
 
-  const handleRSVP = async (eventId, currentUserId) => {
+  const handleRSVP = async (eventId) => {
+    var currentUserId = localStorage.getItem("currentUserId");
+    currentUserId = localStorage.getItem("currentUserId");
+
+    console.log(
+      "This is the current User Id for handleRSVP function: ",
+      currentUserId
+    );
+
     //refers to the events table
     const eventRef = ref(database, `events/${eventId}`);
 

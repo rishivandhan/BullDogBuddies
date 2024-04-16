@@ -65,7 +65,7 @@ function CreateEvents() {
   }
 
   function handleLogout() {
-    localStorage.removeItem("currentUserID");
+    localStorage.removeItem("currentUserId");
 
     alert("Logout Successfull");
     navigate("/");

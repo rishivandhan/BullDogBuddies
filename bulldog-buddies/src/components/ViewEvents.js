@@ -9,9 +9,13 @@ import { useState, useEffect, useRef } from "react";
 function ViewEvents() {
   const [events, setEvents] = useState({});
   const { listenForEventUpdates, EventCard, handleRSVP } = useEventOperations();
-  const currentUserId = localStorage.getItem("CurrentUserId");
+  var currentUserId = localStorage.getItem("CurrentUserId");
 
-  console.log("the current UserID in the view events page is: ", currentUserId);
+  // if (currentUserId == null) {
+  //   alert(" there is no user ID");
+  // }
+  currentUserId = localStorage.getItem("currentUserId");
+
   useEffect(() => {
     // Set up a listener for real-time updates
     const unsubscribe = listenForEventUpdates((newEvents) => {
