@@ -52,6 +52,7 @@ export const useEventOperations = () => {
 
       // Set the new event data using the state values --> pushed the events being created into event database.
       await set(newEventRef, {
+        CreatorUserId: currentUserId,
         EventID: newEventRef.key,
         title: title,
         description: description || "No description",
@@ -81,24 +82,16 @@ export const useEventOperations = () => {
         await set(child(userRef, newEventRef.key), {
           CreatedEventID: newEventRef.key,
           title: title,
-          description: description || "No description",
           location: location,
           time: time,
-          expirationTime: expirationTime,
-          numberOfPeopleLimit: eventPeopleRegistered,
-          numberOfPeopleRegistered: 0,
         });
 
         //push to the RSVPEvents substable in users
         await set(child(userEventRef, newEventRef.key), {
           RSVPEventID: newEventRef.key,
           title: title,
-          description: description || "No description",
           location: location,
           time: time,
-          expirationTime: expirationTime,
-          numberOfPeopleLimit: eventPeopleRegistered,
-          numberOfPeopleRegistered: 0,
         });
 
         console.log("Event successfully aded in user");
@@ -150,29 +143,30 @@ export const useEventOperations = () => {
       if (eventSnapshot.exists()) {
         const eventData = eventSnapshot.val();
 
-        if (
-          eventData.numberOfPeopleRegistered < eventData.numberOfPeopleLimit
-        ) {
-          const updatedEventData = {
-            ...eventData,
-            numberOfPeopleRegistered: eventData.numberOfPeopleRegistered + 1,
-          };
-          await set(eventRef, updatedEventData);
+        if (eventData.CreatorUserId != currentUserId) {
+          if (
+            eventData.numberOfPeopleRegistered < eventData.numberOfPeopleLimit
+          ) {
+            const updatedEventData = {
+              ...eventData,
+              numberOfPeopleRegistered: eventData.numberOfPeopleRegistered + 1,
+            };
+            await set(eventRef, updatedEventData);
 
-          const userRSVPData = {
-            RSVPEventID: eventId,
-            title: eventData.title,
-            description: eventData.description,
-            location: eventData.location,
-            time: eventData.time,
-            expirationTime: eventData.expirationTime,
-            numberOfPeopleLimit: eventData.numberOfPeopleLimit,
-            numberOfPeopleRegistered: updatedEventData.numberOfPeopleRegistered,
-          };
-          await set(userEventRef, userRSVPData);
-          alert("You have successfully RSVP'd to the event!");
+            //content to store everything on the userRSVP sub-table
+            const userRSVPData = {
+              RSVPEventID: eventData.EventID,
+              title: eventData.title,
+              location: eventData.location,
+              time: eventData.time,
+            };
+            await set(userEventRef, userRSVPData);
+            alert("You have successfully RSVP'd to the event!");
+          } else {
+            alert("This event is already full.");
+          }
         } else {
-          alert("This event is already full.");
+          alert("You cannot RSVP to your own event.");
         }
       } else {
         alert("The Event does not exist");
