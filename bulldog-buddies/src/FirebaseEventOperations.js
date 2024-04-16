@@ -79,26 +79,26 @@ export const useEventOperations = () => {
 
         //push to the createvents subtable in users
         await set(child(userRef, newEventRef.key), {
-          eventID: newEventRef.key,
-          // title: title,
-          // description: description || "No description",
-          // location: location,
-          // time: time,
-          // expirationTime: expirationTime,
-          // numberOfPeopleLimit: eventPeopleRegistered,
-          // numberOfPeopleRegistered: 0,
+          CreatedEventID: newEventRef.key,
+          title: title,
+          description: description || "No description",
+          location: location,
+          time: time,
+          expirationTime: expirationTime,
+          numberOfPeopleLimit: eventPeopleRegistered,
+          numberOfPeopleRegistered: 0,
         });
 
         //push to the RSVPEvents substable in users
         await set(child(userEventRef, newEventRef.key), {
           RSVPEventID: newEventRef.key,
-          // title: title,
-          // description: description || "No description",
-          // location: location,
-          // time: time,
-          // expirationTime: expirationTime,
-          // numberOfPeopleLimit: eventPeopleRegistered,
-          // numberOfPeopleRegistered: 0,
+          title: title,
+          description: description || "No description",
+          location: location,
+          time: time,
+          expirationTime: expirationTime,
+          numberOfPeopleLimit: eventPeopleRegistered,
+          numberOfPeopleRegistered: 0,
         });
 
         console.log("Event successfully aded in user");
@@ -126,6 +126,67 @@ export const useEventOperations = () => {
     //function to add events to the user
   };
 
+  const handleRSVP = async (eventId, currentUserId) => {
+    //refers to the events table
+    const eventRef = ref(database, `events/${eventId}`);
+
+    //refers to the user's RSVP subtable.
+    const userEventRef = ref(
+      database,
+      `users/${currentUserId}/UserRSVPEvents/${eventId}`
+    );
+
+    try {
+      const eventSnapshot = await get(eventRef);
+
+      if (eventSnapshot.exists()) {
+        const eventData = eventSnapshot.val();
+
+        if (
+          eventData.numberOfPeopleRegistered < eventData.numberOfPeopleLimit
+        ) {
+          const updatedEventData = {
+            ...eventData,
+            numberOfPeopleRegistered: eventData.numberOfPeopleRegistered + 1,
+          };
+          await set(eventRef, updatedEventData);
+
+          const userRSVPData = {
+            RSVPEventID: eventId,
+            title: eventData.title,
+            description: eventData.description,
+            location: eventData.location,
+            time: eventData.time,
+            expirationTime: eventData.expirationTime,
+            numberOfPeopleLimit: eventData.numberOfPeopleLimit,
+            numberOfPeopleRegistered: updatedEventData.numberOfPeopleRegistered,
+          };
+          await set(userEventRef, userRSVPData);
+          alert("You have successfully RSVP'd to the event!");
+        } else {
+          alert("This event is already full.");
+        }
+      } else {
+        alert("The Event does not exist");
+      }
+    } catch (error) {
+      console.log("error occured during rsvp: ", error);
+      alert("an error occured during RSVP check console");
+    }
+
+    // Transaction to increment the number of people registered
+    // await update(eventRef, {
+    //   numberOfPeopleRegistered: (prevValue) => prevValue + 1,
+    // })
+    //   .then(() => {
+    //     console.log("RSVP successful!");
+    //     alert("You have successfully RSVP'd to the event!");
+    //   })
+    //   .catch((error) => {
+    //     console.error("RSVP error: ", error);
+    //     alert("There was a problem with your RSVP.");
+    //   });
+  };
   // Function to set up a listener for event updates
   const listenForEventUpdates = (updateFn) => {
     const eventsRef = ref(database, "events");
@@ -140,7 +201,7 @@ export const useEventOperations = () => {
   };
 
   // Component for rendering an individual event card
-  const EventCard = ({ event, onRsvp }) => (
+  const EventCard = ({ event }) => (
     <div className="event-card">
       <h2 className="title">{event.title}</h2>
       <p className="description">{event.description}</p>
@@ -150,12 +211,13 @@ export const useEventOperations = () => {
         Participants: {event.numberOfPeopleRegistered}/
         {event.numberOfPeopleLimit}
       </p>
-      <button onClick={() => onRsvp(event)} className="rsvp-button">
+      <button onClick={() => handleRSVP(event.EventID)} className="rsvp-button">
         RSVP
       </button>
     </div>
   );
 
+  //function to handle the RSVP button
   // Returned state hooks
   return {
     eventTitle,
@@ -172,6 +234,7 @@ export const useEventOperations = () => {
     setEventNumberOfPeopleLimit,
     eventId,
     createRSVPEvent,
+    handleRSVP,
     listenForEventUpdates,
     EventCard,
   };
