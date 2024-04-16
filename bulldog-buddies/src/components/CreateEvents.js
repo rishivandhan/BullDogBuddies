@@ -64,13 +64,6 @@ function CreateEvents() {
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem("currentUserId");
-
-    alert("Logout Successfull");
-    navigate("/");
-  }
-
   return (
     <div className="createEvents-container">
       <div className="sidebar">
@@ -149,9 +142,6 @@ function CreateEvents() {
                 id="submit-event-button"
               >
                 Create Event
-              </button>
-              <button type="logout" id="logout" onClick={handleLogout}>
-                Logout
               </button>
             </div>
           </form>
