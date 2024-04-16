@@ -3,28 +3,30 @@ import "./ViewEvents.css";
 import Sidebar from "./sidebar";
 import { Card } from "react-bootstrap";
 import ItemsSlider from "./ItemsSlider";
+import { database } from '../Firebase';
+import { push, ref, onValue, set, update, remove } from 'firebase/database';
 import { useEventOperations } from "../FirebaseEventOperations";
 import { useState, useEffect, useRef } from "react";
 
 function ViewEvents() {
-  const [events, setEvents] = useState({});
-  const { listenForEventUpdates, EventCard, handleRSVP } = useEventOperations();
-  var currentUserId = localStorage.getItem("CurrentUserId");
+  const [events, setEvents] = useState([]);
+  const { handleRSVP } = useEventOperations();
 
-  // if (currentUserId == null) {
-  //   alert(" there is no user ID");
-  // }
-  currentUserId = localStorage.getItem("currentUserId");
+    // Fetch events from Firebase
+    useEffect(() => {
+        const eventsRef = ref(database, 'events');
+        const unsubscribe = onValue(eventsRef, (snapshot) => {
+            const fetchedEvents = snapshot.exists() ? Object.entries(snapshot.val()).map(([key, value]) => ({
+                id: key,
+                ...value
+            })) : [];
+            setEvents(fetchedEvents);
+        });
 
-  useEffect(() => {
-    // Set up a listener for real-time updates
-    const unsubscribe = listenForEventUpdates((newEvents) => {
-      setEvents(newEvents);
-    });
+        return () => unsubscribe();
+    }, []);
 
-    // Clean up the listener when the component unmounts
-    return unsubscribe;
-  }, [listenForEventUpdates]);
+    
 
   return (
     <div className="viewEvnts-container">
@@ -35,16 +37,21 @@ function ViewEvents() {
         </React.Fragment>
       </div>
       <div className="view-display">
-        {events ? (
-          Object.keys(events).map((key) => (
-            <EventCard
-              key={key}
-              event={events[key]}
-              onRsvp={() => handleRSVP(key, currentUserId)}
-            />
-          ))
-        ) : (
-          <p>No events to show</p>
+        {events.length > 0 ? events.map((event) => (
+            <div key={event.id} className="event-card">
+                <h2 className="title">{event.title}</h2>
+                <p className="description">{event.description}</p>
+                <p className="time">Time: {event.time}</p>
+                <p className="location">Location: {event.location}</p>
+                <p className="participants">
+                    Participants: {event.numberOfPeopleRegistered}/{event.numberOfPeopleLimit}
+                </p>
+                <button onClick={() => handleRSVP(event.id)} className="rsvp-button">
+                    RSVP
+                </button>
+            </div>
+        )) : (
+            <p>No events to show</p>
         )}
       </div>
     </div>
