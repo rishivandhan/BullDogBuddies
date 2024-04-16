@@ -46,9 +46,11 @@ export const useEventOperations = () => {
       );
       const eventsRef = ref(database, `events`);
       const newEventRef = push(eventsRef);
+
+      // Store the event ID (key) in state
       setEventId(newEventRef.key);
 
-      // Set the new event data using the state values
+      // Set the new event data using the state values --> pushed the events being created into event database.
       await set(newEventRef, {
         EventID: newEventRef.key,
         title: title,
@@ -60,9 +62,7 @@ export const useEventOperations = () => {
         numberOfPeopleRegistered: 0, // Initialize with zero registered users
       });
 
-      // Store the event ID (key) in state
-
-      console.log("Creatd Event ID: ", newEventRef.key);
+      console.log("Created Event ID: ", newEventRef.key);
 
       //store the event ID (key) py passing in currentUserID
       try {
@@ -80,25 +80,25 @@ export const useEventOperations = () => {
         //push to the createvents subtable in users
         await set(child(userRef, newEventRef.key), {
           eventID: newEventRef.key,
-          title: title,
-          description: description || "No description",
-          location: location,
-          time: time,
-          expirationTime: expirationTime,
-          numberOfPeopleLimit: eventPeopleRegistered,
-          numberOfPeopleRegistered: 0,
+          // title: title,
+          // description: description || "No description",
+          // location: location,
+          // time: time,
+          // expirationTime: expirationTime,
+          // numberOfPeopleLimit: eventPeopleRegistered,
+          // numberOfPeopleRegistered: 0,
         });
 
         //push to the RSVPEvents substable in users
         await set(child(userEventRef, newEventRef.key), {
           RSVPEventID: newEventRef.key,
-          title: title,
-          description: description || "No description",
-          location: location,
-          time: time,
-          expirationTime: expirationTime,
-          numberOfPeopleLimit: eventPeopleRegistered,
-          numberOfPeopleRegistered: 0,
+          // title: title,
+          // description: description || "No description",
+          // location: location,
+          // time: time,
+          // expirationTime: expirationTime,
+          // numberOfPeopleLimit: eventPeopleRegistered,
+          // numberOfPeopleRegistered: 0,
         });
 
         console.log("Event successfully aded in user");
