@@ -46,9 +46,11 @@ export const useEventOperations = () => {
       );
       const eventsRef = ref(database, `events`);
       const newEventRef = push(eventsRef);
+      setEventId(newEventRef.key);
 
       // Set the new event data using the state values
       await set(newEventRef, {
+        EventID: newEventRef.key,
         title: title,
         description: description || "No description",
         location: location,
@@ -59,7 +61,7 @@ export const useEventOperations = () => {
       });
 
       // Store the event ID (key) in state
-      setEventId(newEventRef.key);
+
       console.log("Creatd Event ID: ", newEventRef.key);
 
       //store the event ID (key) py passing in currentUserID
@@ -77,7 +79,7 @@ export const useEventOperations = () => {
 
         //push to the createvents subtable in users
         await set(child(userRef, newEventRef.key), {
-          //eventID: newEventRef.key,
+          eventID: newEventRef.key,
           title: title,
           description: description || "No description",
           location: location,
@@ -89,7 +91,7 @@ export const useEventOperations = () => {
 
         //push to the RSVPEvents substable in users
         await set(child(userEventRef, newEventRef.key), {
-          //RSVPEventID: newEventRef.key,
+          RSVPEventID: newEventRef.key,
           title: title,
           description: description || "No description",
           location: location,
@@ -98,6 +100,7 @@ export const useEventOperations = () => {
           numberOfPeopleLimit: eventPeopleRegistered,
           numberOfPeopleRegistered: 0,
         });
+
         console.log("Event successfully aded in user");
         console.log(
           "Event Successfully added in RSVP Events from user Creating Event"
