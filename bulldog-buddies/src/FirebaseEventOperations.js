@@ -31,7 +31,7 @@ export const useEventOperations = () => {
   // Function to create a new event and store the event ID
   const createRSVPEvent = async (
     title,
-    expirationTime,
+    //expirationTime,
     description,
     location,
     eventPeopleRegistered,
