@@ -123,10 +123,10 @@ export const useEventOperations = () => {
     var currentUserId = localStorage.getItem("currentUserId");
     currentUserId = localStorage.getItem("currentUserId");
 
-    console.log(
-      "This is the current User Id for handleRSVP function: ",
-      currentUserId
-    );
+    if (!currentUserId) {
+      alert("Please login before RSVPing");
+      return;
+    }
 
     //refers to the events table
     const eventRef = ref(database, `events/${eventId}`);
@@ -138,6 +138,12 @@ export const useEventOperations = () => {
     );
 
     try {
+      const userRSVPSnapsot = await get(userEventRef);
+      if (userRSVPSnapsot.exists()) {
+        alert("You have already RSVPed for this event");
+        return;
+      }
+
       const eventSnapshot = await get(eventRef);
 
       if (eventSnapshot.exists()) {
