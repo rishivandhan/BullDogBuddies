@@ -13,10 +13,9 @@
     position: relative;
     flex-direction: column;
     padding: 32px;
-    width: 30%;
+    width: 100%;
     max-width: 640px;
     background-color: #FFF;
-    border-radius: 30px;
 }
 .popup-close {
     position: absolute;

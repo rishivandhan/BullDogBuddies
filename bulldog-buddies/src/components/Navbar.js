@@ -242,27 +242,15 @@ function Navbar() {
           <h3>Login</h3>
           <form onSubmit={handleLoginFormSubmit}>
             <label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="EMAIL"
-                class="placeholder"
-              />
+              email:
+              <input type="text" id="email" name="email" />
             </label>
             <br />
             <label>
-              <input
-                type="text"
-                id="password"
-                name="password"
-                placeholder="PASSWORD"
-                class="placeholder"
-              />
+              Password:
+              <input type="text" id="password" name="password" />
             </label>
             <br />
-
-            <div className="horizontal-line"></div>
 
             <button
               type="submit"
@@ -279,47 +267,25 @@ function Navbar() {
           <h3>Sign Up</h3>
           <form onSubmit={handleSignupFormSubmit}>
             <div className="form-group">
-              <label htmlFor="username"></label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="USERNAME"
-                class="placeholder"
-              />
+              <label htmlFor="username">Username:</label>
+              <input type="text" id="username" name="username" />
             </div>
             <div className="form-group">
-              <label htmlFor="email"></label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="EMAIL"
-                class="placeholder"
-              />
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" />
             </div>
             <div className="form-group">
-              <label htmlFor="password"></label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="PASSWORD"
-                class="placeholder"
-              />
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" name="password" />
             </div>
             <div className="form-group">
-              <label htmlFor="confirm-password"></label>
+              <label htmlFor="confirm-password">Confirm Password:</label>
               <input
                 type="password"
                 id="confirm-password"
                 name="confirmPassword"
-                placeholder="CONFIRM Password"
-                class="placeholder"
               />
             </div>
-
-            <div className="horizontal-line"></div>
 
             <button
               type="submit"
