@@ -140,7 +140,7 @@ export const useEventOperations = () => {
     try {
       const userRSVPSnapsot = await get(userEventRef);
       if (userRSVPSnapsot.exists()) {
-        alert("You have already RSVPed for this event");
+        alert("You are already RSVPed for this event");
         return;
       }
 
@@ -171,8 +171,6 @@ export const useEventOperations = () => {
           } else {
             alert("This event is already full.");
           }
-        } else {
-          alert("You cannot RSVP to your own event.");
         }
       } else {
         alert("The Event does not exist");
