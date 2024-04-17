@@ -4,6 +4,7 @@ import MyEvents from "./components/MyEvents";
 import CreateEvents from "./components/CreateEvents";
 import ViewEvents from "./components/ViewEvents";
 import SignOut from "./components/SignOut";
+import About from "./components/About";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
