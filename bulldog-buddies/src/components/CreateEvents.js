@@ -43,7 +43,7 @@ function CreateEvents() {
 
       createRSVPEvent(
         title,
-        ExpirationTime,
+        // ExpirationTime,
         description,
         location,
         eventPeopleRegistered,
@@ -84,14 +84,14 @@ function CreateEvents() {
                 defaultValue=""
                 id="Title"
               />{" "}
-              <br />
-              Expiration Time:{" "}
-              <input
+              {/* <br /> */}
+              {/* Expiration Time:{" "} */}
+              {/* <input
                 className="form-input"
                 name="eventExpirationTime"
                 defaultValue=""
                 id="ExpirationTime"
-              />{" "}
+              />{" "} */}
               <br />
               Description:{" "}
               <input

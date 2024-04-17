@@ -58,7 +58,7 @@ export const useEventOperations = () => {
         description: description || "No description",
         location: location,
         time: time,
-        expirationTime: expirationTime,
+        //expirationTime: expirationTime,
         numberOfPeopleLimit: eventPeopleRegistered,
         numberOfPeopleRegistered: 0, // Initialize with zero registered users
       });
@@ -108,7 +108,7 @@ export const useEventOperations = () => {
       setEventDescription("");
       setEventLocation("");
       setEventTime("");
-      setEventExpirationTime(30);
+      //setEventExpirationTime(30);
       setEventNumberOfPeopleLimit(10);
       alert("Event created successfully.");
     } catch (error) {
@@ -234,8 +234,8 @@ export const useEventOperations = () => {
     setEventLocation,
     eventTime,
     setEventTime,
-    eventExpirationTime,
-    setEventExpirationTime,
+    //eventExpirationTime,
+    //setEventExpirationTime,
     eventNumberOfPeopleLimit,
     setEventNumberOfPeopleLimit,
     eventId,
