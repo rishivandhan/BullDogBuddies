@@ -8,14 +8,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .signup-inner {
     position: relative;
-    flex-direction: column;
-    padding: 32px;
     width: 100%;
     max-width: 640px;
     background-color: #FFF;
+    border-radius: 20px;
 }
 .pop-inner{
     position: absolute;

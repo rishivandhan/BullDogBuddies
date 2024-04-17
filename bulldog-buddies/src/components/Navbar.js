@@ -242,15 +242,14 @@ function Navbar() {
           <h3>Login</h3>
           <form onSubmit={handleLoginFormSubmit}>
             <label>
-              email:
-              <input type="text" id="email" name="email" />
+              <input type="text"  id = "email" name = "email" placeholder="EMAIL" class="placeholder"/>
             </label>
             <br />
             <label>
-              Password:
-              <input type="text" id="password" name="password" />
+              <input type="text" id = "password" name = "password" placeholder="PASSWORD" class="placeholder"/>
             </label>
             <br />
+            <div className="horizontal-line"></div>
 
             <button
               type="submit"
@@ -267,26 +266,28 @@ function Navbar() {
           <h3>Sign Up</h3>
           <form onSubmit={handleSignupFormSubmit}>
             <div className="form-group">
-              <label htmlFor="username">Username:</label>
-              <input type="text" id="username" name="username" />
+              <label htmlFor="username"></label>
+              <input type="text" id="username" name="username" placeholder="USERNAME" class="placeholder"/>
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" />
+              <label htmlFor="email"></label>
+              <input type="email" id="email" name="email" placeholder="EMAIL" class="placeholder"/>
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" name="password" />
+              <label htmlFor="password"></label>
+              <input type="password" id="password" name="password" placeholder="PASSWORD" class="placeholder"/>
             </div>
             <div className="form-group">
-              <label htmlFor="confirm-password">Confirm Password:</label>
+              <label htmlFor="confirm-password" ></label>
               <input
                 type="password"
                 id="confirm-password"
                 name="confirmPassword"
+                placeholder="CONFIRM Password" 
+                class="placeholder"
               />
             </div>
-
+            <div className="horizontal-line"></div>
             <button
               type="submit"
               id="submit-signup-button"
