@@ -14,7 +14,7 @@ function CreateEvents() {
     var currentUserId = localStorage.getItem("currentUserId");
     //constant stores values entered into textbox
     const title = document.getElementById("Title").value;
-    const ExpirationTime = document.getElementById("ExpirationTime").value;
+    //const ExpirationTime = document.getElementById("ExpirationTime").value;
     const description = document.getElementById("description").value;
     const location = document.getElementById("location").value;
     const eventPeopleRegistered =
@@ -25,7 +25,7 @@ function CreateEvents() {
     //check to see if fields were entered or else create event;
     if (
       !title ||
-      !ExpirationTime ||
+      //!ExpirationTime ||
       !description ||
       !location ||
       !eventPeopleRegistered ||
