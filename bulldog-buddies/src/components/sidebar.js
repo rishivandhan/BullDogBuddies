@@ -11,13 +11,16 @@ function Sidebar() {
           <NavLink to="/About">About</NavLink>
         </li>
         <li>
-          <NavLink to="/Profile">Profile</NavLink>{" "}
+          <NavLink to="/ViewEvents">All Events</NavLink>
+        </li>
+        <li>
+          <NavLink to="/MyEvents">My Events</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Viewrsvp">RSVP Events</NavLink>
         </li>
         <li>
           <NavLink to="/CreateEvents">Create Events</NavLink>
-        </li>
-        <li>
-          <NavLink to="/ViewEvents">View Events</NavLink>
         </li>
         <li>
           <NavLink to="/SignOut">Sign out</NavLink>

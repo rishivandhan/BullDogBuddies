@@ -1,11 +1,13 @@
 .sidebar {
   width: 20%;
+  height: auto;
   background-color: var(--secondaryColor);
   position: relative;
   left: -14px;
-  height: auto;
-  padding-top:0;
-  overflow: hidden;
+  top:0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 1;
 }
 ul {
   list-style-type: none;
