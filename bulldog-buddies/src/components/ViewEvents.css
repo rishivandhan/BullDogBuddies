@@ -24,6 +24,7 @@
 .event-card:hover {
     transform: scale(1.02); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    transition: ease-in-out 0.15s;
 }
 
 .event-card .title {
@@ -42,7 +43,7 @@
 }
 
 .rsvp-button {
-    background-color: #555555; 
+    background-color: #555;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -52,7 +53,7 @@
 }
   
 .rsvp-button:hover {
-    background-color: #e93f3f;
+    background-color: var(--mainColor);
 }
   
 

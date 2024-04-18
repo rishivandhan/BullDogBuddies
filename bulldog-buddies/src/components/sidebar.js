@@ -17,7 +17,7 @@ function Sidebar() {
           <NavLink to="/MyEvents">My Events</NavLink>
         </li>
         <li>
-          <NavLink to="/Viewrsvp">RSVP Events</NavLink>
+          <NavLink to="/Viewrsvp">My RSVP Events</NavLink>
         </li>
         <li>
           <NavLink to="/CreateEvents">Create Events</NavLink>

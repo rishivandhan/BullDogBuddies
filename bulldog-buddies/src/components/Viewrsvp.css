@@ -1,0 +1,38 @@
+.myrsvp-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.view-display {
+    flex-grow: 1;
+    background-color: #ff4136;
+    padding-top: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+}
+.rsvp-card {
+    background-color: #ffffff;
+    color: #333333;
+    margin: 10px 40px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.rsvp-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: ease-in-out 0.15s;
+}
+
+.rsvp-card .title {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+.rsvp-card .description,
+.rsvp-card .time,
+.rsvp-card .location,
+.rsvp-card .participants {
+    font-size: 1em;
+    margin-bottom: 0.3em;
+    line-height: 1.4;
+}

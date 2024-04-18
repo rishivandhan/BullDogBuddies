@@ -33,7 +33,6 @@ function ViewEvents() {
       <div className="sidebar">
         <React.Fragment>
           <Sidebar />
-          <h1></h1>
         </React.Fragment>
       </div>
       <div className="view-display">
