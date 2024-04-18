@@ -7,6 +7,7 @@ import SignOut from "./components/SignOut";
 import About from "./components/About";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import Viewrsvp from "./components/Viewrsvp";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/About" element={<About />} />
-        <Route path="/MyEvents" element={<MyEvents />} />
-        <Route path="/CreateEvents" element={<CreateEvents />} />
         <Route path="/ViewEvents" element={<ViewEvents />} />
+        <Route path="/MyEvents" element={<MyEvents />} />
+        <Route path="/Viewrsvp" element={<Viewrsvp />} />
+        <Route path="/CreateEvents" element={<CreateEvents />} />
         <Route path="/SignOut" element={<SignOut />} />
       </Routes>
     </div>
