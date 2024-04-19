@@ -151,12 +151,20 @@ export const useEventOperations = () => {
         const eventData = eventSnapshot.val();
 
         if (eventData.CreatorUserId != currentUserId) {
-          if (
-            eventData.numberOfPeopleRegistered < eventData.numberOfPeopleLimit
-          ) {
+          // console.log(
+          //   "numberofPeopleRegistred",
+          //   eventData.numberOfPeopleRegistered
+          // );
+          // console.log("numberofPeopleLimit", eventData.numberOfPeopleLimit);
+
+          const registered = parseInt(eventData.numberOfPeopleRegistered, 10);
+          const limit = parseInt(eventData.numberOfPeopleLimit, 10);
+
+          if (registered < limit) {
+            console.log("number of people is less than number of people limit");
             const updatedEventData = {
               ...eventData,
-              numberOfPeopleRegistered: eventData.numberOfPeopleRegistered + 1,
+              numberOfPeopleRegistered: registered + 1,
             };
             await set(eventRef, updatedEventData);
 
