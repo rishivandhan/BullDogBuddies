@@ -241,6 +241,35 @@ export const useEventOperations = () => {
       alert("there was an error undoing your RSVP");
     }
   };
+
+  const handledeleteCreatedEvent = async (eventId, currentUserId) => {
+    console.log("handling delete event");
+    console.log("the curretn event ID is", eventId);
+    console.log("the current user ID is", currentUserId);
+
+    const eventRef = ref(database, `events/${eventId}`);
+    const UserCreatedRef = ref(
+      database,
+      `users/${currentUserId}/UserCreatedEvents/${eventId}`
+    );
+
+    const UserRSVPRef = ref(
+      database,
+      `users/${currentUserId}/UserRSVPEvents/${eventId}`
+    );
+
+    try {
+      await remove(eventRef);
+      await remove(UserCreatedRef);
+      await remove(UserRSVPRef);
+
+      alert("event successfully deleted");
+    } catch (error) {
+      alert("error deleting event");
+      console.log("ran into an error when deleting event", error);
+    }
+  };
+
   // Function to set up a listener for event updates
   const listenForEventUpdates = (updateFn) => {
     const eventsRef = ref(database, "events");
@@ -292,5 +321,6 @@ export const useEventOperations = () => {
     listenForEventUpdates,
     EventCard,
     handleUndoRSVP,
+    handledeleteCreatedEvent,
   };
 };
