@@ -202,6 +202,45 @@ export const useEventOperations = () => {
     //     alert("There was a problem with your RSVP.");
     //   });
   };
+
+  //function to handle undo RSVP button
+  const handleUndoRSVP = async (eventId, currentUserId) => {
+    console.log("the currentEventId to undo RSVP is:", eventId);
+    console.log("the currentUserId to undo RSVP is:", currentUserId);
+
+    //references to find the table in the database;
+    const eventRef = ref(database, `events/${eventId}`);
+    const UserRSVPRef = ref(
+      database,
+      `users/${currentUserId}/UserRSVPEvents/${eventId}`
+    );
+
+    try {
+      const eventSnapshot = await get(eventRef);
+
+      if (
+        eventSnapshot.exists() &&
+        eventSnapshot.val().numberOfPeopleRegistered > 0
+      ) {
+        const eventData = eventSnapshot.val();
+        const peopleRegistered = eventData.numberOfPeopleRegistered;
+
+        await update(eventRef, {
+          numberOfPeopleRegistered: peopleRegistered - 1,
+        });
+
+        await remove(UserRSVPRef);
+        console.log("removed userRSVPRef");
+
+        alert("RSVP undone Successfully");
+      } else {
+        alert("There are no participants to remove");
+      }
+    } catch (error) {
+      console.error("Error undoing RSVP: ", error);
+      alert("there was an error undoing your RSVP");
+    }
+  };
   // Function to set up a listener for event updates
   const listenForEventUpdates = (updateFn) => {
     const eventsRef = ref(database, "events");
@@ -252,5 +291,6 @@ export const useEventOperations = () => {
     handleRSVP,
     listenForEventUpdates,
     EventCard,
+    handleUndoRSVP,
   };
 };
