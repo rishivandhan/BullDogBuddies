@@ -109,7 +109,7 @@ function CreateEvents() {
                 id="location"
               />
               <br />
-              Number of People to Resgister:{" "}
+              Number of People Resgister:{" "}
               <input
                 className="form-input"
                 name="eventPeopleRegistered"
