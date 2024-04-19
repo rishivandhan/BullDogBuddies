@@ -36,7 +36,8 @@ export const useEventOperations = () => {
     location,
     eventPeopleRegistered,
     time,
-    currentUserId
+    currentUserId,
+    Limit
   ) => {
     try {
       // Reference to events in the database
@@ -59,8 +60,8 @@ export const useEventOperations = () => {
         location: location,
         time: time,
         //expirationTime: expirationTime,
-        numberOfPeopleLimit: eventPeopleRegistered,
-        numberOfPeopleRegistered: 0, // Initialize with zero registered users
+        numberOfPeopleLimit: Limit,
+        numberOfPeopleRegistered: eventPeopleRegistered, // Initialize with zero registered users
       });
 
       console.log("Created Event ID: ", newEventRef.key);
@@ -109,7 +110,7 @@ export const useEventOperations = () => {
       setEventLocation("");
       setEventTime("");
       //setEventExpirationTime(30);
-      setEventNumberOfPeopleLimit(10);
+      setEventNumberOfPeopleLimit("");
       alert("Event created successfully.");
     } catch (error) {
       console.error("Firebase error: ", error);

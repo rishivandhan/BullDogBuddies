@@ -48,7 +48,8 @@ function CreateEvents() {
         location,
         eventPeopleRegistered,
         time,
-        currentUserId
+        currentUserId,
+        Limit
       );
 
       // document.getElementById("Title").value = "";
@@ -109,7 +110,7 @@ function CreateEvents() {
                 id="location"
               />
               <br />
-              Number of People Registered:{" "}
+              Number of People Pre-Registered:{" "}
               <input
                 className="form-input"
                 name="eventPeopleRegistered"
