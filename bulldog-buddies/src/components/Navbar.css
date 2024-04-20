@@ -49,12 +49,54 @@ header .nav-btn{
     color: black;
     cursor: pointer;
     padding: 12px;
-    padding-left: 18px;
-    padding-right: 18px;
     border-radius: 0.8rem;
     font-size: 1.2rem;
     border: none;
     outline: none;
+}
+.login label{
+    justify-content: center;
+    align-items: center;
+}
+.singup label{
+    justify-content: center;
+    align-items: center;
+}
+.submit-login-button{
+    width: 50%; 
+    background: var(--mainColor);
+    font-size: 20px;
+    border-radius: 10px;
+}
+.submit-signup-button{
+    width: 50%; 
+    background: var(--mainColor);
+    font-size: 20px;
+    border-radius: 10px;
+}
+.login form input{
+    align-items: center;
+    width: 75%;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: #d4cfcf;
+    border: none;
+}
+.signup form input{
+    align-items: center;
+    width: 75%;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: #d4cfcf;
+    border: none;
+}
+form .submit-login-button{
+    display: block;
+    margin: auto;
+}
+form .submit-signup-button{
+    display: block;
+    margin: auto;
 }
 
 
@@ -156,62 +198,17 @@ header .nav-btn{
     padding-bottom: 5%;
 }
 
-.login form label{
-    display: block;
-    margin: 0 auto;
-    margin-left: 34%;
-}
-
-.login form input{
-    width: 50%;
-    border-radius: 10px;
-    background-color: #d4cfcf;
-}
-
 .horizontal-line {
     width: 80%; 
     margin: 0 auto 20px; 
     border-bottom: 1px solid #c4bcbc; 
   }
 
-.submit-login-button{
-    display: block;
-    margin: 0 auto;
-    width: 50%; 
-    background: var(--mainColor);
-    font-size: 20px;
-    border-radius: 10px;
-}
-
-
 .signup h3{
     text-align: center;
     margin: 0 auto 15px;
     font-size: 35px;
     padding-bottom: 5%;
-}
-
-.signup form input{
-    width: 100%;
-    border-radius: 10px;
-    background-color: #d4cfcf;
-}
-
-.form-group{
-    display: block;
-    padding-bottom: 3%;
-    margin: 0 auto;
-    width: 30%;
-    border-radius: 20px;
-}
-
-.submit-signup-button{
-    display: block;
-    margin: 0 auto;
-    width: 30%; 
-    background: var(--mainColor);
-    font-size: 20px;
-    border-radius: 10px;
 }
 
 .placeholder{

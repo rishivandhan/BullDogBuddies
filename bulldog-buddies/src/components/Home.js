@@ -2,15 +2,12 @@ import React from "react";
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 import "./Home.css";
-import "./Footer.css";
-import "./Navbar.css";
 import { ReactTyped } from 'react-typed';
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
 
 function Home() {
   return (
-    
     <div class="home-container">
       <Navbar />
       <div class="left-side">
@@ -46,8 +43,11 @@ function Home() {
           Sign up now!
         </button>
       </div>
-      <Footer />
+      <React.Fragment>
+        <Footer />
+      </React.Fragment>
     </div>
+    
   );
 }
 

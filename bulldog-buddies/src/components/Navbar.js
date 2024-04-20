@@ -238,9 +238,9 @@ function Navbar() {
         </button>
 
         {/*Login Popup*/}
-        <Login trigger={loginPopup} setTrigger={LoginPopup}>
+        <Login trigger={loginPopup} setTrigger={LoginPopup} className="login-form">
           <h3>Login</h3>
-          <form onSubmit={handleLoginFormSubmit}>
+          <form onSubmit={handleLoginFormSubmit} >
             <label>
               <input type="text"  id = "email" name = "email" placeholder="EMAIL" class="placeholder"/>
             </label>
@@ -262,7 +262,7 @@ function Navbar() {
         </Login>
 
         {/*Signup Popup*/}
-        <Signup trigger={signupPopup} setTrigger={SignUpPopup}>
+        <Signup trigger={signupPopup} setTrigger={SignUpPopup} className="signup-form">
           <h3>Sign Up</h3>
           <form onSubmit={handleSignupFormSubmit}>
             <div className="form-group">
@@ -297,6 +297,7 @@ function Navbar() {
             </button>
 
             <br></br>
+            
           </form>
         </Signup>
 

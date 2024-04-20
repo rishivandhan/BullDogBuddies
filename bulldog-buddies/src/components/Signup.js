@@ -7,7 +7,7 @@ function Signup(props) {
   return props.trigger ? (
     <div className="signup">
       <div className="signup-inner">
-        <button className="nav-close" onClick={() => props.setTrigger(false)}>
+        <button className="signup-btn nav-close" onClick={() => props.setTrigger(false)}>
           <FaTimes />
         </button>
         {props.children}
