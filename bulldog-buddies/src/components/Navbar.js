@@ -1,8 +1,10 @@
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useState, useRef } from "react";
+import { useState, useRef, Component } from "react";
 import "./Navbar.css";
 import Signup from "./Signup";
 import Login from "./Login";
+import { motion as m } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import { database } from "../Firebase";
 import { push, ref, onValue, set, remove, update } from "firebase/database";
@@ -249,12 +251,12 @@ function Navbar() {
               <input type="text" id = "password" name = "password" placeholder="PASSWORD" class="placeholder"/>
             </label>
             <br />
-            <div className="horizontal-line"></div>
+            <div className="login-horizontal-line"></div>
 
             <button
               type="submit"
               id="submit-login-button"
-              className="submit-login-button"
+              className="submit-button"
             >
               Login
             </button>
@@ -283,7 +285,7 @@ function Navbar() {
                 type="password"
                 id="confirm-password"
                 name="confirmPassword"
-                placeholder="CONFIRM Password" 
+                placeholder="Confirm Password" 
                 class="placeholder"
               />
             </div>
@@ -291,16 +293,12 @@ function Navbar() {
             <button
               type="submit"
               id="submit-signup-button"
-              className="submit-signup-button"
+              className="submit-button"
             >
               Sign Up
             </button>
-
-            <br></br>
-            
           </form>
         </Signup>
-
         <button className="nav-btn nav-close" onClick={showNavbar}>
           <FaTimes />
         </button>

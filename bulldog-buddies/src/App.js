@@ -6,10 +6,12 @@ import ViewEvents from "./components/ViewEvents";
 import SignOut from "./components/SignOut";
 import About from "./components/About";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Viewrsvp from "./components/Viewrsvp";
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <div>
       <Routes>

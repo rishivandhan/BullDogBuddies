@@ -2,6 +2,8 @@ import React from 'react';
 import Sidebar from './sidebar';
 import './About.css';
 
+import { motion as m } from "framer-motion";
+
 function About() {
 
     return (
@@ -9,8 +11,13 @@ function About() {
             <div className="sidebar">
                 <Sidebar />
             </div>
-            <div className="create-display">
-                <div className="create-title">
+            <m.div className="create-display"
+                initial={{opacity:0, y:"15%"}} 
+                animate={{opacity:1, y:"0%"}}
+                exit={{opacity:0, y:"15%", duration: 1}}
+                transition={{duration:0.5, ease:"easeInOut"}}
+            >
+                <div className="createAbout-title">
                     <h3>About Us</h3>
                 </div>
                 <div className="aboutform-container">
@@ -52,7 +59,7 @@ function About() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </m.div>
         </div>
     );
 }

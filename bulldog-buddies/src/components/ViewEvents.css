@@ -1,21 +1,23 @@
-.viewEvnts-container {
+.viewEvents-container {
     display: flex;
     flex-direction: row;
     height: 100vh;
-    }
+    background-color: var(--mainColor);
+}
 
 .view-display {
-    flex-grow: 1; 
-    background-color: #ff4136; 
-    padding-top: 20px;
-    padding-right: 20px;
-    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--mainColor);
 }
 
 .event-card {
     background-color: #ffffff; 
     color: #333333; 
-    margin: 10px 40px;
+    margin: 10px 30px;
     padding: 20px;
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -55,6 +57,17 @@
 .rsvp-button:hover {
     background-color: var(--mainColor);
 }
-  
+.createView-title{
+    height: 5rem;
+    margin-left: 2rem;
+    justify-content: space-around;
+    align-content: center;
+    width: auto;
+    background-color: var(--mainColor);
+}
+.createView-title h3 {
+    font-weight: 600;
+    font-size: 40px;
+}
 
   

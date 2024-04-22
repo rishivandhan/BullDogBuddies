@@ -16,17 +16,16 @@
     flex-direction: column;
     padding: 30px;
     padding-top: 20px;;
+    height: 25rem;
     width: 40%;
     max-width: 640px;
     background-color: #FFF;
     border-radius: 30px;
 }
 .popup-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-}
-.login-btn{
+    position: relative;
+    top: 15px;
+    left: 15px;
     cursor: pointer;
     background: transparent;
     border: none;

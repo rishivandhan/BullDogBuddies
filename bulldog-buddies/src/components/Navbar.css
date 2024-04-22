@@ -58,45 +58,58 @@ header .nav-btn{
     justify-content: center;
     align-items: center;
 }
-.singup label{
+.signup label{
     justify-content: center;
     align-items: center;
 }
-.submit-login-button{
+.submit-button{
     width: 50%; 
+    height: 2.5rem;
+    color: white;
     background: var(--mainColor);
     font-size: 20px;
     border-radius: 10px;
-}
-.submit-signup-button{
-    width: 50%; 
-    background: var(--mainColor);
-    font-size: 20px;
-    border-radius: 10px;
+    border: none;
 }
 .login form input{
     align-items: center;
     width: 75%;
-    height: 2rem;
+    height: 2.5rem;
     border-radius: 10px;
     background-color: #d4cfcf;
     border: none;
+    font-size: medium;
+}
+.form-group{
+    justify-content: center;
+    align-items: center;
+    margin-left: 3.8rem;
+}
+.line{
+    margin-top: 1rem;
 }
 .signup form input{
     align-items: center;
-    width: 75%;
-    height: 2rem;
+    width: 80%;
+    height: 2.5rem;
     border-radius: 10px;
     background-color: #d4cfcf;
     border: none;
+    font-size: medium;
 }
-form .submit-login-button{
+form .submit-button{
     display: block;
     margin: auto;
 }
-form .submit-signup-button{
-    display: block;
-    margin: auto;
+.horizontal-line {
+    width: 80%; 
+    margin: 20px auto 20px; 
+    border-bottom: 1px solid #c4bcbc; 
+}
+.login-horizontal-line {
+    width: 80%; 
+    margin: 0 auto 20px; 
+    border-bottom: 1px solid #c4bcbc; 
 }
 
 
@@ -119,9 +132,6 @@ form .submit-signup-button{
         background-color: var(--mainColor);
         transition: 1s;
         transform: translateY(-100vh);
-    }
-    .signup-btn {
-        background: none;
     }
     header .responsive_nav {
         transform: none;
@@ -198,12 +208,6 @@ header .nav-btn{
     padding-bottom: 5%;
 }
 
-.horizontal-line {
-    width: 80%; 
-    margin: 0 auto 20px; 
-    border-bottom: 1px solid #c4bcbc; 
-  }
-
 .signup h3{
     text-align: center;
     margin: 0 auto 15px;
@@ -235,9 +239,6 @@ header .nav-btn{
         background-color: var(--mainColor);
         transition: 1s;
         transform: translateY(-100vh);
-    }
-    .signup-btn {
-        background: none;
     }
     header .responsive_nav {
         transform: none;

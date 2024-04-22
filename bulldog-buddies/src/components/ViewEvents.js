@@ -7,6 +7,7 @@ import { database } from '../Firebase';
 import { push, ref, onValue, set, update, remove } from 'firebase/database';
 import { useEventOperations } from "../FirebaseEventOperations";
 import { useState, useEffect, useRef } from "react";
+import { motion as m } from "framer-motion";
 
 function ViewEvents() {
   const [events, setEvents] = useState([]);
@@ -29,13 +30,21 @@ function ViewEvents() {
     
 
   return (
-    <div className="viewEvnts-container">
+    <div className="viewEvents-container">
       <div className="sidebar">
         <React.Fragment>
           <Sidebar />
         </React.Fragment>
       </div>
-      <div className="view-display">
+      <m.div className="view-display"
+        initial={{opacity:0, y:"15%"}} 
+        animate={{opacity:1, y:"0%"}}
+        exit={{opacity:0, y:"15%"}}
+        transition={{duration:0.5, ease:"easeInOut"}}
+      >
+        <div className="createView-title">
+          <h3>All Events</h3>
+        </div>
         {events.length > 0 ? events.map((event) => (
             <div key={event.id} className="event-card">
                 <h2 className="title">{event.title}</h2>
@@ -50,9 +59,11 @@ function ViewEvents() {
                 </button>
             </div>
         )) : (
+          <div className="event-card">
             <p>No events to show</p>
+          </div>
         )}
-      </div>
+      </m.div>
     </div>
   );
 }

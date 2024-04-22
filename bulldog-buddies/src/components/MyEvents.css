@@ -40,4 +40,16 @@
     margin-bottom: 0.3em;
     line-height: 1.4;
   }
+.createEvent-title{
+  height: 7rem;
+  margin-left: 2rem;
+  justify-content: space-around;
+  align-content: center;
+  width: auto;
+  background-color: var(--mainColor);
+}
+.createEvent-title h3 {
+  font-weight: 600;
+  font-size: 40px;
+}
   

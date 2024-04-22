@@ -3,6 +3,7 @@ import "./CreateEvents.css";
 import Sidebar from "./sidebar";
 import { useEventOperations } from "../FirebaseEventOperations";
 import { useNavigate } from "react-router-dom";
+import { motion as m } from "framer-motion";
 
 function CreateEvents() {
   const navigate = useNavigate();
@@ -70,7 +71,11 @@ function CreateEvents() {
       <div className="sidebar">
         <Sidebar />
       </div>
-      <div className="create-display">
+      <m.div className="create-display"
+        initial={{opacity:0, y:"15%"}} 
+        animate={{opacity:1, y:"0%"}}
+        exit={{opacity:0, y:"15%", duration: 1}}
+        transition={{duration:0.5, ease:"easeInOut"}}>
         <div className="create-title">
           <h3>Create an Event</h3>
         </div>
@@ -147,7 +152,7 @@ function CreateEvents() {
             </div>
           </form>
         </div>
-      </div>
+      </m.div>
     </div>
   );
 }

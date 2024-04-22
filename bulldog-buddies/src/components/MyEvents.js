@@ -8,6 +8,7 @@ import { database } from "../Firebase";
 import { push, ref, onValue, set, update, remove } from "firebase/database";
 import { useEventOperations } from "../FirebaseEventOperations";
 import { useState, useEffect, useRef } from "react";
+import { motion as m } from "framer-motion";
 
 import Sidebar from "./sidebar";
 
@@ -86,7 +87,15 @@ function MyEvents() {
       <div className="sidebar">
         <Sidebar />
       </div>
-      <div className="view-display">
+      <m.div className="view-display"
+        initial={{opacity:0, y:"15%"}} 
+        animate={{opacity:1, y:"0%"}}
+        exit={{opacity:0, y:"15%"}}
+        transition={{duration:0.5, ease:"easeInOut"}}
+      >
+        <div className="createEvent-title">
+          <h3>My Events</h3>
+        </div>
         {createdEvents.length > 0 ? (
           createdEvents.map((event) => (
             <div key={event.id} className="created-event-card">
@@ -110,9 +119,11 @@ function MyEvents() {
             </div>
           ))
         ) : (
-          <p>No events created by you to show.</p>
+          <div className="event-card">
+            <p>No events to show</p>
+          </div>
         )}
-      </div>
+      </m.div>
     </div>
   );
 }

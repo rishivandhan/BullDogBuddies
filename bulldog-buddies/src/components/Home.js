@@ -1,12 +1,14 @@
-import React from "react";
-import Navbar from "./Navbar"
+import React, { Component } from "react";
+import Navbar from "./Navbar";
 import Footer from "./Footer"
 import "./Home.css";
 import { ReactTyped } from 'react-typed';
+import { AnimatePresence } from "framer-motion";
+
 import HighFive from "../Assets/High five-amico 1.jpg";
 import partyPicture from "../Assets/party-pana 1.jpg";
 
-function Home() {
+function Home( ) {
   return (
     <div class="home-container">
       <Navbar />
