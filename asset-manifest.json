@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BullDogBuddies/static/css/main.97a6068b.css",
+    "main.js": "/BullDogBuddies/static/js/main.0e55b360.js",
+    "static/media/party-pana 1.jpg": "/BullDogBuddies/static/media/party-pana 1.3695cfc60c6ea65bca31.jpg",
+    "static/media/High five-amico 1.jpg": "/BullDogBuddies/static/media/High five-amico 1.3df280f81b6b01e1ecf0.jpg",
+    "index.html": "/BullDogBuddies/index.html",
+    "main.97a6068b.css.map": "/BullDogBuddies/static/css/main.97a6068b.css.map",
+    "main.0e55b360.js.map": "/BullDogBuddies/static/js/main.0e55b360.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.97a6068b.css",
+    "static/js/main.0e55b360.js"
+  ]
+}
