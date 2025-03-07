@@ -229,7 +229,7 @@ function Navbar() {
   return (
     <header>
       <h3>
-        <a href="/">Bulldog Buddies</a>
+        <a href="/bulldog-buddies/src/App.js">Bulldog Buddies</a>
       </h3>
       <nav ref={navRef}>
         <button className="login-btn" onClick={() => LoginPopup(true)}>
@@ -244,11 +244,11 @@ function Navbar() {
           <h3>Login</h3>
           <form onSubmit={handleLoginFormSubmit} >
             <label>
-              <input type="text"  id = "email" name = "email" placeholder="EMAIL" class="placeholder"/>
+              <input type="text" id="email" name="email" placeholder="EMAIL" class="placeholder" />
             </label>
             <br />
             <label>
-              <input type="text" id = "password" name = "password" placeholder="PASSWORD" class="placeholder"/>
+              <input type="text" id="password" name="password" placeholder="PASSWORD" class="placeholder" />
             </label>
             <br />
             <div className="login-horizontal-line"></div>
@@ -269,15 +269,15 @@ function Navbar() {
           <form onSubmit={handleSignupFormSubmit}>
             <div className="form-group">
               <label htmlFor="username"></label>
-              <input type="text" id="username" name="username" placeholder="USERNAME" class="placeholder"/>
+              <input type="text" id="username" name="username" placeholder="USERNAME" class="placeholder" />
             </div>
             <div className="form-group">
               <label htmlFor="email"></label>
-              <input type="email" id="email" name="email" placeholder="EMAIL" class="placeholder"/>
+              <input type="email" id="email" name="email" placeholder="EMAIL" class="placeholder" />
             </div>
             <div className="form-group">
               <label htmlFor="password"></label>
-              <input type="password" id="password" name="password" placeholder="PASSWORD" class="placeholder"/>
+              <input type="password" id="password" name="password" placeholder="PASSWORD" class="placeholder" />
             </div>
             <div className="form-group">
               <label htmlFor="confirm-password" ></label>
@@ -285,7 +285,7 @@ function Navbar() {
                 type="password"
                 id="confirm-password"
                 name="confirmPassword"
-                placeholder="Confirm Password" 
+                placeholder="Confirm Password"
                 class="placeholder"
               />
             </div>
