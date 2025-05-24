@@ -9,7 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import { database } from "../Firebase";
 import { push, ref, onValue, set, remove, update } from "firebase/database";
 import { useUserOperations } from "../FirebaseUserOperations";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 var userInstance = -1;
 var currentUserId = -1;
@@ -229,7 +229,7 @@ function Navbar() {
   return (
     <header>
       <h3>
-        <a href="/bulldog-buddies/src/App.js">Bulldog Buddies</a>
+        <Link to="/">Bulldog Buddies</Link>
       </h3>
       <nav ref={navRef}>
         <button className="login-btn" onClick={() => LoginPopup(true)}>
